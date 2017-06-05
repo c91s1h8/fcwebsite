@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title th:text="#{websiteTitle}"></title>
+  <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+  <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" th:text="#{websiteTitle}">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+           
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lanuage <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a th:href="@{/?lang=zh_CN}">简体中文</a></li>
+                <li><a th:href="@{/?lang=en_US}">English</a></li>
+                <li><a th:href="@{/?lang=en_US}">Japanese</a></li>
+                <li><a th:href="@{/?lang=en_US}">Deutsch</a></li>
+                <li><a th:href="@{/?lang=en_US}">French</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+</body>
+</html>
