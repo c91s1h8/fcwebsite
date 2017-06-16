@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="true">
   <!-- sends logs to logback-beagle -->
   <!-- <consolePlugin /> -->
-  <property name="APP_Name" value="stats" />
+  <property name="APP_Name" value="fcwebsite" />
   <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
   <contextName>${APP_Name}</contextName>
   <property name="charset" value="UTF-8" />
@@ -17,7 +17,7 @@
 
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>/qdc/logs/${APP_Name}.logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>/fc/logs/${APP_Name}.logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
       <maxHistory>30</maxHistory>
     </rollingPolicy>
 
@@ -27,9 +27,8 @@
     </encoder>
   </appender>
 
-  <logger name="com.tsingda" level="INFO"></logger>
+  <logger name="com.feelcolor" level="INFO"></logger>
   <logger name="org.springframework.boot" level="INFO"></logger>
-  <logger name="org.mongodb.driver.cluster" level="INFO"></logger>
   <root level="INFO">
     <appender-ref ref="STDOUT" />
   </root>
