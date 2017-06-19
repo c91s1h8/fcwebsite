@@ -5,10 +5,68 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title th:text="#{websiteTitle}"></title>
-  <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
-  <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
-  <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/js/swiper-3.4.2/swiper.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/swiper-3.4.2/swiper.jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 60%;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color: #000;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .swiper-pagination-bullet-active {
+        color: #fff;
+        background: #007aff;
+    }
+    </style>
 
 </head>
 <body>
@@ -22,19 +80,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" th:text="#{websiteTitle}">Project name</a>
+          <a href="#" >
+            <img class="logo" src="//www4.djicdn.com/assets/images/logo@2x-da7b16c3c5788410b42880cd8a8cfeca.png"></img>
+          </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home22</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-           
+            <li><a class="nav-title-font" th:text="#{menu1}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu2}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu3}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu4}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu5}"></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Default</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lanuage <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <img class="lang-icon" src="http://www3.djicdn.com/assets/images/header/language-c75de0884e52460c72c496e3b0a70e2e.svg"></img>
+              Lanuage <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a th:href="@{/?lang=zh_CN}">简体中文</a></li>
                 <li><a th:href="@{/?lang=en_US}">English</a></li>
@@ -43,24 +106,52 @@
                 <li><a th:href="@{/?lang=en_US}">French</a></li>
               </ul>
             </li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
 
-    <div class="container">
+    <div class="main-container">
+         <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-slide slide1" style="background-color: #000">
+                        <div class="title txt">
+Iphone
+                         </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                <div class="swiper-slide slide2" >
+                        <div class="title txt">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-
-    </div> <!-- /container -->
+                         </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-color: #000">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+            </div>
+    
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+        </div>
+    </div>
+   
+    
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationBulletRender: function (swiper, index, className) {
+            return '<span class="' + className + '" style="height:3px;width:50px"></span>';
+        }
+    });
+    </script>
+    
 </body>
 </html>
