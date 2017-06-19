@@ -31,7 +31,7 @@
     
     .swiper-container {
         width: 100%;
-        height: 60%;
+        height: 100%;
     }
     
     .swiper-slide {
@@ -66,6 +66,19 @@
         color: #fff;
         background: #007aff;
     }
+    .row{
+        margin-top:3px;
+        margin-right:1px;
+        margin-left:1px;
+    }
+    .col-sm-4{
+        padding-right:5px;
+        padding-left:5px;
+    }
+    .col-xs-12{
+        padding-right:5px;
+        padding-left:5px;
+    }
     </style>
 
 </head>
@@ -86,14 +99,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a class="nav-title-font" th:text="#{menu1}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu2}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu3}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu4}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu5}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left1}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left2}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left3}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left4}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left5}"></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
+            <li>
+                <a class="nav-title-font" >
+                    <span th:text="#{menu.right1}"></span>
+                    <img src="http://www4.djicdn.com/assets/images/header/shopping-2ca000d6b5ed54e0af8d1dce7f5caaf6.svg"></img>
+                </a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <img class="lang-icon" src="http://www3.djicdn.com/assets/images/header/language-c75de0884e52460c72c496e3b0a70e2e.svg"></img>
@@ -117,26 +135,55 @@
          <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="swiper-slide slide1" style="background-color: #000">
+                    <div class="swiper-slide slide1" >
                         <div class="title txt">
 Iphone
                          </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                <div class="swiper-slide slide2" >
-                        <div class="title txt">
-
-                         </div>
+                    <div class="swiper-slide slide2" >
+                            <div class="title txt">
+    
+                             </div>
                     </div>
                 </div>
-                <div class="swiper-slide" style="background-color: #000">Slide 3</div>
+                <div class="swiper-slide">
+                      <div class="swiper-slide slide3" >
+                         <div class="title txt">
+
+                         </div>
+                      </div>
+                </div>
                 <div class="swiper-slide">Slide 4</div>
             </div>
     
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev swiper-button-white"></div>
             <div class="swiper-button-next swiper-button-white"></div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <a href="/"
+                    class="thumbnail"><img
+                    src="//www2.djicdn.com/cms_uploads/grid_picture/image/1443/e2663fe04dd0aa22583955f456c44add.png"></img>
+                </a>
+            </div>
+             <div class="col-xs-12 col-sm-4">
+                <a href="/"
+                    class="thumbnail"><img
+                    src="//www3.djicdn.com/cms_uploads/grid_picture/image/1448/5b7473872c981355c2012bf19855efaf.jpg"></img>
+                </a>
+            </div>
+             <div class="col-xs-12 col-sm-4">
+                <a href="/"
+                    class="thumbnail"><img
+                    src="//www5.djicdn.com/cms_uploads/grid_picture/image/1454/ab812f0cbf9f44db119012bc3b5f516d.jpg"></img>
+                </a>
+            </div>
         </div>
     </div>
    
