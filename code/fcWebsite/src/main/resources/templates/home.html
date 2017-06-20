@@ -72,12 +72,12 @@
         margin-left:1px;
     }
     .col-sm-4{
-        padding-right:5px;
-        padding-left:5px;
+        padding-right:4px;
+        padding-left:4px;
     }
     .col-xs-12{
-        padding-right:5px;
-        padding-left:5px;
+        padding-right:4px;
+        padding-left:4px;
     }
     </style>
 
@@ -104,12 +104,31 @@
             <li><a class="nav-title-font" th:text="#{menu.left3}"></a></li>
             <li><a class="nav-title-font" th:text="#{menu.left4}"></a></li>
             <li><a class="nav-title-font" th:text="#{menu.left5}"></a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-title-font" data-toggle="dropdown" th:text="#{menu.left5}">
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" style="width:1000px">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
                 <a class="nav-title-font" >
                     <span th:text="#{menu.right1}"></span>
                     <img src="http://www4.djicdn.com/assets/images/header/shopping-2ca000d6b5ed54e0af8d1dce7f5caaf6.svg"></img>
+                </a>
+            </li>
+            <li>
+                <a class="nav-title-font" >账户
+                    <img src="http://www4.djicdn.com/assets/images/header/user-730facbec6baf744423cbab517199afa.svg"></img>
                 </a>
             </li>
             <li class="dropdown">
@@ -124,7 +143,7 @@
                 <li><a th:href="@{/?lang=en_US}">French</a></li>
               </ul>
             </li>
-
+             
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -136,22 +155,34 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="swiper-slide slide1" >
-                        <div class="title txt">
-Iphone
-                         </div>
+                        <div class="caption">
+                            <div class="item-name">珉哥的吊毛</div>
+                            <div class="item-name-txt">御万物之律 游无疆境界<br/>宇宙万象 尽在掌握</div>
+                            <div class="item-name-footer">
+                                <a href="#"
+                                    style="color: #f7f8f9;margin-right: 20px"
+                                    class="link-more">了解更多</a>
+                                <div class="visible-xs-block"></div>
+                                <a style="margin-bottom: -5px"
+                                    href="#"
+                                    class="btn btn-primary">立即购买</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="swiper-slide slide2" >
-                            <div class="title txt">
+                            <div class="caption">
     
                              </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                       <div class="swiper-slide slide3" >
-                         <div class="title txt">
-
+                         <div class="caption">
+                            <div class="item-name">产品一一一一</div>
+                            <div class="item-name-txt">产品一一一一</div>
+                            <div class="item-name-txt">产品一一一一</div>
                          </div>
                       </div>
                 </div>
