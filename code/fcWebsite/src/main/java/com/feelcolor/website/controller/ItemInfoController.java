@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("item")
-public class ItemController extends BaseController {
+public class ItemInfoController extends BaseController {
 
 }

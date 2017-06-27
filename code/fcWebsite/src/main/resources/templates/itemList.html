@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    <link rel="stylesheet" th:href="@{/css/filtermore.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+     <script th:src="@{/js/filtermore.js}"></script>
+    
+    <style>
+    .navbar-default{
+        background-color: #eee
+    }
+    .searchbox{
+    border-left: 0px;
+    border-right: 0px;
+    }
+    
+    .hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 55%;
+  height: 81%;
+  left: 22%;
+  top: 10%;
+  border-radius: 80%;
+  border: 2px solid #FFF;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(50%,50%,0);
+  transform: translate3d(50%,50%,0);
+}
+
+.hovereffect:hover .overlay {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.hovereffect:hover img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="1.4" /><feFuncG type="linear" slope="1.4" /><feFuncB type="linear" slope="1.4" /></feComponentTransfer></filter></svg>#filter');
+  filter: brightness(1.4);
+  -webkit-filter: brightness(1.4);
+}
+
+.hovereffect h2 {
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  background-color: transparent;
+  color: #FFF;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-150%,-400%,0);
+  transform: translate3d(-150%,-400%,0);
+}
+
+.hovereffect a, .hovereffect p {
+  color: #FFF;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-150%,-400%,0);
+  transform: translate3d(-150%,-400%,0);
+}
+
+.hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2, .hovereffect:hover .overlay {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+.itemcol{
+width:250px;
+background-color: #fff;padding: 10px
+}
+
+</style>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lanren-search-form {
+    width: 40%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.lanren-search-form .search-bd {
+    height: 25px;
+}
+
+.lanren-search-form .search-bd li {
+    font-size: 12px;
+    width: 60px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+    background-color: #eee;
+    color: #666;
+}
+
+.lanren-search-form .search-bd li.selected {
+    color: #fff;
+    font-weight: 700;
+    background-color: #B61D1D;
+}
+
+.lanren-search-form .search-hd {
+    height: 40px;
+    background-color: #B61D1D;
+    padding: 3px;
+    position: relative;
+}
+
+.lanren-search-form .search-hd .search-input {
+    width: 90%;
+    height: 33px;
+    line-height: 22px;
+    padding: 6px 0;
+    background: none;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+    position: relative;
+    left: 3px;
+    top: 0;
+    z-index: 5; #
+    margin-left: -10px;
+}
+
+.lanren-search-form .search-hd .btn-search {
+    width: 75px;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    border: 0;
+    z-index: 6;
+    cursor: pointer;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 700;
+    background: none;
+    outline: none;
+}
+
+.lanren-search-form .search-hd .pholder {
+    display: inline-block;
+    padding: 2px 0;
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    left: 13px;
+    top: 11px;
+    z-index: 4;
+    background: url(images/zoom.jpg) no-repeat 0 0;
+    padding-left: 25px; #
+    top: 11px;
+}
+
+.lanren-search-form .search-hd .s2, .lanren-search-form .search-hd #s2 {
+    display: none;
+}
+
+.lanren-search-form .search-bg {
+    width: 90%;
+    height: 34px;
+    background-color: #fff;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    z-index: 1;
+}
+</style>
+
+</head>
+<body>
+<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" >
+            <img class="logo" src="//www4.djicdn.com/assets/images/logo@2x-da7b16c3c5788410b42880cd8a8cfeca.png"></img>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="nav-title-font" th:text="#{menu.left1}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left2}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left3}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left4}"></a></li>
+            <li><a class="nav-title-font" th:text="#{menu.left5}"></a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-title-font" data-toggle="dropdown" th:text="#{menu.left5}">
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" style="width:1000px">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="nav-title-font" >
+                    <span th:text="#{menu.right1}"></span>
+                    <img src="http://www4.djicdn.com/assets/images/header/shopping-2ca000d6b5ed54e0af8d1dce7f5caaf6.svg"></img>
+                </a>
+            </li>
+            <li>
+                <a class="nav-title-font" >账户
+                    <img src="http://www4.djicdn.com/assets/images/header/user-730facbec6baf744423cbab517199afa.svg"></img>
+                </a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <img class="lang-icon" src="http://www3.djicdn.com/assets/images/header/language-c75de0884e52460c72c496e3b0a70e2e.svg"></img>
+              Lanuage <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a th:href="@{/?lang=zh_CN}">简体中文</a></li>
+                <li><a th:href="@{/?lang=en_US}">English</a></li>
+                <li><a th:href="@{/?lang=en_US}">Japanese</a></li>
+                <li><a th:href="@{/?lang=en_US}">Deutsch</a></li>
+                <li><a th:href="@{/?lang=en_US}">French</a></li>
+              </ul>
+            </li>
+             
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="item-list-contain">
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-11">
+                 <div class="lanren-search-form">
+                    <div id="search-hd" class="search-hd">
+                        <div class="search-bg"></div>
+                        <input type="text" id="s1" class="search-input"/>
+                        <input type="text" id="s2" class="search-input"/>
+                        <button id="submit" class="btn-search" value="搜索">搜索</button>
+                      
+                    </div>
+                </div>
+                
+                 
+            </div>
+                        
+        </div>
+        
+
+        
+        
+        <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+        <div class="row">
+             <div class="col-xs-2">
+             </div>
+             <div class="col-xs-8">
+                <div class="row">
+                    <h4>全部商品 > </h4>
+                </div>
+                <div class="row">
+                    
+                       <div class="searchbox" id="basic_searchbox"></div>
+                </div>
+             
+                <div class="row">
+                
+                    <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/p14.jpg" alt=""></img>
+                                <div class="overlay">
+                                    <h2>Glowing Clover</h2>
+                                    <p>
+                                        <a href="#">立即购买</a>
+                                    </p>
+                                </div>
+                             <div>asddadasdasdas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/girl.jpg" alt=""></img>
+                                <div class="overlay">
+                                    <h2>Effect 14</h2>
+                                    <p>
+                                        <a href="#">立即购买</a>
+                                    </p>
+                                </div>
+                                <div>asddadasdasdas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/for.jpg" alt=""></img>
+                                <div class="overlay">
+                                    <h2>Effect 14</h2>
+                                    <p>
+                                        <a href="#">立即购买</a>
+                                    </p>
+                                </div>
+                                <div>asddadasdasdas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/p13.jpg" alt=""></img>
+                                <div class="overlay">
+                                    <h2>Effect 14</h2>
+                                    <p>
+                                        <a href="#">立即购买</a>
+                                    </p>
+                                </div>
+                                <div>水晶吊坠 $22.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/cac.jpg" alt=""></img>
+                                <div class="overlay">
+                                    <h2>Effect 14</h2>
+                                    <p>
+                                        <a href="#">立即购买</a>
+                                    </p>
+                                </div>
+                                <div>asddadasdasdas</div>
+                        </div>
+                    </div>
+                    
+                </div>
+             </div> 
+             
+               <div class="col-xs-2"></div>
+              
+        </div>
+        
+    </div>
+
+   
+    
+    <script>
+    $(function(){
+        initCustomDate();
+    	
+    })
+
+  //日期自定义
+    function initCustomDate() {
+        var options = {
+            //查询事件
+            "search": function (paramList) {
+                $("#customDate_searchbox_param").html('查询参数:'+JSON.stringify(paramList));
+            },
+            //默认展开条件数
+            "expandRow": 2,
+            //查询条件
+            "searchBoxs": [
+                {
+                    "id": "Status_CustomDate",
+                    "title": "材料类型",
+                    "isMultiple":true,
+                    "data": [
+                        { "value": "0", "text": "玛瑙" },
+                        { "value": "1", "text": "红宝石"},
+                        { "value": "2", "text": "蓝宝石"},
+                        { "value": "3", "text": "琥珀"},
+                        { "value": "4", "text": "翡翠"},
+                        { "value": "5", "text": "石榴石"},
+                        { "value": "6", "text": "祖母绿"},
+                    ]
+                },
+                {
+                    "id": "Createor_CustomDate",
+                    "title": "净度",
+                    "data": [
+                        { "value": "admin", "text": "极纯净(FL)" },
+                        { "value": "zhangsan", "text": "纯净(VVS)" },
+                        { "value": "zhangsan", "text": "较纯净(VS)" },
+                        { "value": "zhangsan", "text": "不纯净(SI)" },
+                        { "value": "zhangsan", "text": "不透明(OP)" }
+                    ]
+                },
+                {
+                    "id": "Createor_CustomDate",
+                    "title": "处理类别",
+                    "data": [
+                        { "value": "admin", "text": "加热(Heated)" },
+                        { "value": "zhangsan", "text": "未加热(Unheated)" },
+                        { "value": "zhangsan", "text": "染色(Dyed)" },
+                        { "value": "zhangsan", "text": "填充(Filling)" },
+                        { "value": "zhangsan", "text": "扩散(Diffusion)" },
+                        { "value": "zhangsan", "text": "合成（Artificial）" }
+                    ]
+                }
+            ]
+        };
+        $("#basic_searchbox").fiterMore(options);
+
+        //自定义日期搜索初始化
+        $("#searchitem_CreatedTimeOne_c_custom_start").addClass("form-control layer-date");
+        $("#searchitem_CreatedTimeOne_c_custom_end").addClass("form-control layer-date");
+        //日期范围限制
+        var start = {
+            elem: '#searchitem_CreatedTimeOne_c_custom_start',
+            format: 'YYYY-MM-DD hh:mm:ss',
+            max: laydate.now(),
+            istime: true,
+            istoday: true
+        };
+        var end = {
+            elem: '#searchitem_CreatedTimeOne_c_custom_end',
+            format: 'YYYY-MM-DD hh:mm:ss',
+            max: laydate.now(),
+            istime: true,
+            istoday: true
+        };
+        laydate(start);
+        laydate(end);
+    }
+
+    </script>
+    
+</body>
+</html>
