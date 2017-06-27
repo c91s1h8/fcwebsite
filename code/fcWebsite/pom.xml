@@ -79,11 +79,21 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.1.0</version>
         </dependency>
-
-
+        <!-- nexus上自己打的jar包 -->
+        <dependency>
+            <groupId>com.feelcolor.utils</groupId>
+            <artifactId>fc-utils</artifactId>
+            <version>0.0.1.RELEASE</version>
+        </dependency>
     </dependencies>
-
-
+    <!-- 仓库地址 -->
+    <repositories>
+        <repository>
+            <id>fc</id>
+            <name>fc</name>
+            <url>http://47.94.161.88:8081/repository/fc-public/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
