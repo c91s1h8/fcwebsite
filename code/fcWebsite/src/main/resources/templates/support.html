@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+   .banner{
+   height:300px;
+   background:url(//www2.djicdn.com/assets/images/support/banner-d4e9f3ec0297ae1ec3f3dbc5ac623040.jpg) center center no-repeat;
+   background-color:#edeff3
+   }
+   .support-s1 .item {
+    display: inline-block;
+    width: 155px;
+    height: 155px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #707473;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.support-s1 .item:hover {
+    background-color: #f7f8f9;
+    color: #707473
+}
+
+.support-s1 .item .cover, .support-s1 .item img {
+    width: 60px;
+    height: 60px
+}
+
+.support-s1 .item .cover path {
+    width: 100%;
+    height: 100%
+}
+
+.support-s1 .item h4 {
+    font-size: 14px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: #707473
+}
+    </style>
+
+</head>
+<body>
+<!-- Static navbar -->
+    <div th:include="nav :: nav"></div> 
+
+     <div class="banner">
+     </div>
+     <section class="support-s1">
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3" style="text-align:center;margin-top: 20px;margin-bottom: 20px"><h3 class="title">欢迎使用 FeelColor 产品支持</h3><p class="desc">我们很高兴为您提供帮助。</p></div>
+        </div>
+        <div class="row">
+
+                <div class="tem-box">
+                    <a href="/support" class="item ga-data"><img
+                        alt=""
+                        src="//www4.djicdn.com/assets/images/support/s1-i1-3f7549951be9ddd9056f2b1107aa2b95.png" />
+                        <h4>产品支持</h4></a><a href="/support"
+                        class="item ga-data"><img alt=""
+                        src="//www3.djicdn.com/assets/images/support/s1-i5-9b4c1ba9f0f72bd7b87c72f8b439b70b.png" />
+                        <h4>购买指南</h4></a><a href="/support"
+                        class="item ga-data"><img alt=""
+                        src="//www1.djicdn.com/assets/images/support/s1-i3-3c17ad520907cc267ac662bff9bccfbe.png" />
+                        <h4>维修服务</h4></a><a href="/support"
+                        class="item ga-data"><img alt=""
+                        src="//www5.djicdn.com/assets/images/support/s1-i2-0c4ffbbf85bc1ddb4b03049aeb13ea55.png" />
+                        <h4>售后服务政策</h4></a><a href="/support"
+                        class="item ga-data"><img alt=""
+                        src="//www5.djicdn.com/assets/images/support/s1-i2-0c4ffbbf85bc1ddb4b03049aeb13ea55.png" />
+                        <h4>售后服务政策</h4></a> <a href="/support"
+                        class="item ga-data"><img alt=""
+                        src="//www5.djicdn.com/assets/images/support/s1-i2-0c4ffbbf85bc1ddb4b03049aeb13ea55.png" />
+                        <h4>售后服务政策</h4></a>
+
+                </div>
+            </div>
+     </div>
+    </section>
+    
+    <script>
+  
+    </script>
+    
+</body>
+</html>

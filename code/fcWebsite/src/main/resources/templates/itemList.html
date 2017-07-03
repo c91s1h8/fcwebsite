@@ -215,70 +215,7 @@ background-color: #fff;padding: 10px
 </head>
 <body>
 <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="#" >
-            <img class="logo" src="//www4.djicdn.com/assets/images/logo@2x-da7b16c3c5788410b42880cd8a8cfeca.png"></img>
-          </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a class="nav-title-font" th:text="#{menu.left1}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu.left2}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu.left3}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu.left4}"></a></li>
-            <li><a class="nav-title-font" th:text="#{menu.left5}"></a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-title-font" data-toggle="dropdown" th:text="#{menu.left5}">
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu" style="width:1000px">
-                    <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a class="nav-title-font" >
-                    <span th:text="#{menu.right1}"></span>
-                    <img src="http://www4.djicdn.com/assets/images/header/shopping-2ca000d6b5ed54e0af8d1dce7f5caaf6.svg"></img>
-                </a>
-            </li>
-            <li>
-                <a class="nav-title-font" >账户
-                    <img src="http://www4.djicdn.com/assets/images/header/user-730facbec6baf744423cbab517199afa.svg"></img>
-                </a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <img class="lang-icon" src="http://www3.djicdn.com/assets/images/header/language-c75de0884e52460c72c496e3b0a70e2e.svg"></img>
-              Lanuage <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a th:href="@{/?lang=zh_CN}">简体中文</a></li>
-                <li><a th:href="@{/?lang=en_US}">English</a></li>
-                <li><a th:href="@{/?lang=en_US}">Japanese</a></li>
-                <li><a th:href="@{/?lang=en_US}">Deutsch</a></li>
-                <li><a th:href="@{/?lang=en_US}">French</a></li>
-              </ul>
-            </li>
-             
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <div th:include="nav :: nav"></div> 
 
     <div class="item-list-contain">
         <div class="row">
@@ -319,7 +256,7 @@ background-color: #fff;padding: 10px
                 
                     <div class="itemcol col-xs-12 col-sm-6 col-md-3 col-lg-3" >
                         <div class="hovereffect">
-                            <img class="img-responsive" src="http://www.niuqiqi.com/z-dm/2017/3/niuqiqi271053/images/p14.jpg" alt=""></img>
+                            <img class="img-responsive" src="https://www.swarovski.com.cn/is-bin/intershop.static/WFS/SCO-Media-Site/-/-/publicimages/CG/B2C/PROD/600/Swarovski-Attract-Light-Dual-Pierced-Earrings-5168932-W600.jpg" alt=""></img>
                                 <div class="overlay">
                                     <h2>Glowing Clover</h2>
                                     <p>

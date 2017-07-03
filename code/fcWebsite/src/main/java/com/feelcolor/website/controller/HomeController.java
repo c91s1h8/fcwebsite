@@ -13,4 +13,12 @@ public class HomeController {
     public String home(){
         return "home";
     }
+    /**
+     * 服务与支持
+     * @return
+     */
+    @RequestMapping("/support")
+    public String support(){
+        return "support";
+    }
 }
