@@ -114,3 +114,14 @@
 .section-container img:hover{    
        transform: scale(1.01);    
   }
+  
+  
+/* footer */
+.footer{
+      text-align: center;
+    font-weight: 400;
+    min-height: 25px;
+    line-height: 20px;
+    font-size: 11px;
+    color: #979797;
+}

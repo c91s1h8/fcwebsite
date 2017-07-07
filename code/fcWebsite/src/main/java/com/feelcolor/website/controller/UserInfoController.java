@@ -25,4 +25,12 @@ public class UserInfoController {
         log.info("ddddddddddddddddddddddddddddddddddddddddddddddddd");
         return userInfoService.selectByPrimaryKey(id);
     }
+    
+    @RequestMapping("/test")
+    public @ResponseBody String test()throws RuntimeException{
+        userInfoService.test();
+        return "";
+    }
+    
+   
 }

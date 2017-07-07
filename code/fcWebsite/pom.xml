@@ -85,6 +85,17 @@
             <artifactId>fc-utils</artifactId>
             <version>0.0.1.RELEASE</version>
         </dependency>
+         <dependency>
+            <groupId>com.feelcolor.pay</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.5</version>
+        </dependency>
+         <dependency>
+            <groupId>com.feelcolor.pay</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>1.5</version>
+        </dependency>
+        
     </dependencies>
     <!-- 仓库地址 -->
     <repositories>

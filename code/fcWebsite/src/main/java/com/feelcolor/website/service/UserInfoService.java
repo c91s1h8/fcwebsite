@@ -5,4 +5,6 @@ import com.feelcolor.website.model.po.UserInfo;
 public interface UserInfoService {
     
     UserInfo selectByPrimaryKey(String id);
+
+    void test() throws RuntimeException;
 }
