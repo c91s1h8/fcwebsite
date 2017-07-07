@@ -1,4 +1,4 @@
-﻿package com.feelcolor.website.config;
+package com.feelcolor.website.config;
 
 import java.io.FileWriter;
 import java.io.IOException;
