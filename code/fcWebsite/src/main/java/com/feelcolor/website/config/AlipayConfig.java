@@ -27,9 +27,9 @@ public class AlipayConfig {
     // 对应APPID下的支付宝公钥。
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuoSa48vvIdqmDjcaMdzkappQBRs/awariiZeyE6EFGFE8PTijkHuP6fQjES7yZmigmvBfw/vfoAv4jQNqmIqidwjCGJZccBLLiiIVQ0r5MHFLM35SIIxdrOK7v7ctjK6mtnFNY5nuQ8GkdDSci/YY4bgtOTLJDmvPQlCgp7JnE1ftFcgMl2jBBAqEUKy43aBTmwBXaAkBjpFfXTb/ZW3cCfKmB/IyTN/51TMsZxJ03LH+AR25WV+tT2mN5aJWsmV48LsS6VrOI/tlZdTml3v/PIbMDxEiP3Ty6XDoEEHXZ1JsjaKnBWxBuVCoG2+4zGQEZ+2+7xRS5IbHlgFuw8ihQIDAQAB";
     // 服务器异步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://http://47.94.161.88:8080/aliPay/notify";
+    public static String notify_url = "http://47.94.161.88:8080/aliPay/notify";
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://http://47.94.161.88:8080";
+    public static String return_url = "http://47.94.161.88:8080";
     // 签名方式
     public static String sign_type = "RSA2";
     // 字符编码格式
