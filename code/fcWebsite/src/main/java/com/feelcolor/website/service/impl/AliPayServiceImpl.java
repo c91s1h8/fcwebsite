@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
@@ -20,7 +19,6 @@ import com.feelcolor.utils.DateUtil;
 import com.feelcolor.website.config.AlipayConfig;
 import com.feelcolor.website.dao.mapper.AlipayNotifyRecordMapper;
 import com.feelcolor.website.model.po.AlipayNotifyRecord;
-import com.feelcolor.website.model.vo.AlipayNotifyRecordVo;
 import com.feelcolor.website.service.AliPayService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -178,6 +176,28 @@ public class AliPayServiceImpl implements AliPayService {
         if(params.get("seller_id")!=null){
             record.setSellerId(params.get("seller_id").toString());
         }
+        if(params.get("out_biz_no")!=null){
+            record.setOutBizNo(params.get("out_biz_no").toString());
+        }
+        if(params.get("refund_fee")!=null){
+            record.setRefundFee(new BigDecimal(params.get("refund_fee").toString()));
+        }
+        if(params.get("out_biz_no")!=null){
+            record.setOutBizNo(params.get("out_biz_no").toString());
+        }
+        if(params.get("gmt_refund")!=null){
+            record.setGmtRefund(DateUtil.parse(params.get("gmt_refund").toString()));
+        }
+        if(params.get("gmt_close")!=null){
+            record.setGmtClose(DateUtil.parse(params.get("gmt_close").toString()));
+        }
+        if(params.get("voucher_detail_list")!=null){
+            record.setVoucherDetailList(params.get("voucher_detail_list").toString());
+        }
+        if(params.get("passback_params")!=null){
+            record.setPassbackParams(params.get("passback_params").toString());
+        }
+        record.setCreateTime(new Date());
         alipayNotifyRecordMapper.insertSelective(record);
     }
 
