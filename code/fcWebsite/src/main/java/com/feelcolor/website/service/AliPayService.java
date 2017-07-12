@@ -1,6 +1,7 @@
 package com.feelcolor.website.service;
 
 import com.alipay.api.AlipayApiException;
+import com.feelcolor.website.model.po.AlipayNotifyRecord;
 
 public interface AliPayService {
 
@@ -14,5 +15,12 @@ public interface AliPayService {
      * @throws AlipayApiException
      */
     String pay(String tradeNo, String totalAmount, String orderName, String description) throws AlipayApiException;
+
+    /**
+     * 插入支付宝回调记录
+     * @param record
+     */
+    void insertNofifyRecord(AlipayNotifyRecord record);
+    
 
 }

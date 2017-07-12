@@ -29,6 +29,6 @@ public class AliPayController {
     @ResponseBody
     public void notify(AlipayNotifyRecord record){
         log.info("===================支付宝回调======================");
-        log.info(record.toString());
+        aliPayService.insertNofifyRecord(record);
     }
 }
