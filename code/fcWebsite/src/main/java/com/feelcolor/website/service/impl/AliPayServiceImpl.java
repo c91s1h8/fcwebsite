@@ -50,11 +50,13 @@ public class AliPayServiceImpl implements AliPayService {
     @Override
     @Transactional
     public String processNofifyRecord(Map<String, String> params) throws AlipayApiException, ParseException {
-        Map<String, String> para = params;
+        String sign = params.get("sign").toString();
+        String sign_type = params.get("sign_type").toString();
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset,
                 AlipayConfig.sign_type); // 调用SDK验证签名
 
+        
         if (signVerified) {// 验证成功
             // 商户订单号
             String out_trade_no = params.get("out_trade_no");
@@ -82,7 +84,9 @@ public class AliPayServiceImpl implements AliPayService {
                 // 注意：
                 // 付款完成后，支付宝系统发送该交易状态通知
             }
-            insertNofifyRecord(para);
+            params.put("sign", sign);
+            params.put("sign_type", sign_type);
+            insertNofifyRecord(params);
             return "success";
 
         } else {// 验证失败
