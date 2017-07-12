@@ -43,19 +43,19 @@ public class AliPayServiceImpl implements AliPayService {
     }
 
     @Override
-    public String insertNofifyRecord(Map<String, String> params,AlipayNotifyRecordVo record) throws AlipayApiException {
+    public String insertNofifyRecord(Map<String, String> params) throws AlipayApiException {
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type); //调用SDK验证签名
 
         if(signVerified) {//验证成功
             //商户订单号
-            String out_trade_no = record.getOut_trade_no();
+            String out_trade_no = params.get("out_trade_no");
         
             //支付宝交易号
-            String trade_no = record.getTrade_no();
+            String trade_no = params.get("trade_no");
         
             //交易状态
-            String trade_status = record.getTrade_status();
+            String trade_status = params.get("trade_status");
            System.out.println("==================================================================================="+trade_status+"|"+out_trade_no+"|"+trade_no);
             
             if(trade_status.equals("TRADE_FINISHED")){

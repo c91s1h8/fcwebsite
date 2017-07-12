@@ -27,10 +27,9 @@ public interface AliPayService {
      * 插入支付宝回调记录
      * @param params 
      * 
-     * @param record
      * @throws AlipayApiException 
      */
-    String insertNofifyRecord(Map<String, String> params, AlipayNotifyRecordVo record) throws AlipayApiException;
+    String insertNofifyRecord(Map<String, String> params) throws AlipayApiException;
 
     /**
      * 交易查询
