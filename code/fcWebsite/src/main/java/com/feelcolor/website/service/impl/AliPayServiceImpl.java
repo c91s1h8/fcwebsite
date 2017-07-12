@@ -18,7 +18,10 @@ import com.feelcolor.website.model.po.AlipayNotifyRecord;
 import com.feelcolor.website.model.vo.AlipayNotifyRecordVo;
 import com.feelcolor.website.service.AliPayService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class AliPayServiceImpl implements AliPayService {
 
     @Resource
@@ -56,7 +59,7 @@ public class AliPayServiceImpl implements AliPayService {
         
             //交易状态
             String trade_status = params.get("trade_status");
-           System.out.println("==================================================================================="+trade_status+"|"+out_trade_no+"|"+trade_no);
+           log.info("==================================================================================="+trade_status+"|"+out_trade_no+"|"+trade_no);
             
             if(trade_status.equals("TRADE_FINISHED")){
                 //判断该笔订单是否在商户网站中已经做过处理

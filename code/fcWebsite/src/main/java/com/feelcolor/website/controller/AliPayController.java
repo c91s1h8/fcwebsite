@@ -53,7 +53,7 @@ public class AliPayController {
             valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
             params.put(name, valueStr);
         }
-        params.forEach((key, value) -> System.err.println(key + " : " + value));
+        params.forEach((key, value) -> log.info(key + " : " + value));
         return aliPayService.insertNofifyRecord(params);
     }
 
