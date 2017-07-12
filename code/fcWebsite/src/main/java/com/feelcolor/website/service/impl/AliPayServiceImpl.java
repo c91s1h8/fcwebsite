@@ -120,6 +120,7 @@ public class AliPayServiceImpl implements AliPayService {
             record.setSubject(params.get("subject").toString());
         }
         if(params.get("sign")!=null){
+            log.info("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+params.get("sign").toString());
             record.setSign(params.get("sign").toString());
         }
         if(params.get("buyer_id")!=null){
@@ -171,6 +172,7 @@ public class AliPayServiceImpl implements AliPayService {
             record.setBuyerPayAmount(new BigDecimal(params.get("buyer_pay_amount").toString()));
         }
         if(params.get("sign_type")!=null){
+            log.info("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+params.get("sign_type").toString());
             record.setSignType(params.get("sign_type").toString());
         }
         if(params.get("seller_id")!=null){
