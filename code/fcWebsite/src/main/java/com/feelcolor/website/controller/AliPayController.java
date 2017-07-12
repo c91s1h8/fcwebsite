@@ -1,6 +1,7 @@
 package com.feelcolor.website.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class AliPayController {
     @RequestMapping("/notify")
     @ResponseBody
     public String notify(HttpServletRequest request)
-            throws UnsupportedEncodingException, AlipayApiException {
+            throws UnsupportedEncodingException, AlipayApiException, ParseException {
         log.info("===================支付宝回调======================");
 
         Map<String, String> params = new HashMap<String, String>();
@@ -54,7 +55,7 @@ public class AliPayController {
             params.put(name, valueStr);
         }
         params.forEach((key, value) -> log.info(key + " : " + value));
-        return aliPayService.insertNofifyRecord(params);
+        return aliPayService.processNofifyRecord(params);
     }
 
     @RequestMapping("/tradeQuery")

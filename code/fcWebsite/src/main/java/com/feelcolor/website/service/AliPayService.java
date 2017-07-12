@@ -1,5 +1,6 @@
 package com.feelcolor.website.service;
 
+import java.text.ParseException;
 import java.util.Map;
 
 import com.alipay.api.AlipayApiException;
@@ -28,8 +29,9 @@ public interface AliPayService {
      * @param params 
      * 
      * @throws AlipayApiException 
+     * @throws ParseException 
      */
-    String insertNofifyRecord(Map<String, String> params) throws AlipayApiException;
+    String processNofifyRecord(Map<String, String> params) throws AlipayApiException, ParseException;
 
     /**
      * 交易查询
