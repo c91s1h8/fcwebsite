@@ -50,6 +50,7 @@ public class AliPayServiceImpl implements AliPayService {
     @Override
     @Transactional
     public String processNofifyRecord(Map<String, String> params) throws AlipayApiException, ParseException {
+        Map<String, String> para = params;
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset,
                 AlipayConfig.sign_type); // 调用SDK验证签名
@@ -81,7 +82,7 @@ public class AliPayServiceImpl implements AliPayService {
                 // 注意：
                 // 付款完成后，支付宝系统发送该交易状态通知
             }
-            insertNofifyRecord(params);
+            insertNofifyRecord(para);
             return "success";
 
         } else {// 验证失败
@@ -120,7 +121,6 @@ public class AliPayServiceImpl implements AliPayService {
             record.setSubject(params.get("subject").toString());
         }
         if(params.get("sign")!=null){
-            log.info("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+params.get("sign").toString());
             record.setSign(params.get("sign").toString());
         }
         if(params.get("buyer_id")!=null){
@@ -172,7 +172,6 @@ public class AliPayServiceImpl implements AliPayService {
             record.setBuyerPayAmount(new BigDecimal(params.get("buyer_pay_amount").toString()));
         }
         if(params.get("sign_type")!=null){
-            log.info("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+params.get("sign_type").toString());
             record.setSignType(params.get("sign_type").toString());
         }
         if(params.get("seller_id")!=null){
