@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    <link href="http://example.com/path/to/video-js.css" rel="stylesheet"/>  
+ <script src="http://vjs.zencdn.net/5.18.4/video.min.js"></script>  
+    <link href="css/video-js.css" rel="stylesheet"/>
+    <!-- If you'd like to support IE8 -->
+    <script src="js/videojs-ie8.min.js"></script>
+
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+    .breadcrumb-nav {
+        padding:52px 0;
+        background: #f7f8f9;
+    }
+    
+    .breadcrumb-nav .title {
+        color: #44a8f2;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 36px;
+    }
+    
+    .breadcrumb {
+        margin: 0;
+        background: 0 0;
+        color: #707473;
+        text-transform: capitalize;
+        font-weight: 300;
+        font-size: 12px;
+        padding: 0 0 0 3px
+    }
+    .ol, ul{
+        list-style:none;
+        vertical-align:baseline;
+    }
+    </style>
+
+</head>
+<body>
+    <!-- Static navbar -->
+    <div th:include="nav :: nav"></div> 
+
+    <div class="breadcrumb-nav">
+        <div class="container">
+            <h1 class="title">
+                <span>人才招聘</span>
+            </h1>
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li>人才招聘</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-9">
+                    <video id="my-video" class="video-js" controls="controls"  preload="auto" width="640" height="264"
+          poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+            <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
+            <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
+            <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg"/>
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider upgrading to a web browser that
+              <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+          </video>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Static footer -->
+    <div th:include="footer :: footer"></div> 
+    
+    <script>
+    var myPlayer = videojs('my-video');
+    videojs("my-video").ready(function(){
+        var myPlayer = this;
+        myPlayer.play();
+    });
+
+    </script>
+    
+</body>
+</html>

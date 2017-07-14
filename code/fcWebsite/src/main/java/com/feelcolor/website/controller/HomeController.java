@@ -21,4 +21,13 @@ public class HomeController {
     public String support(){
         return "support";
     }
+    
+    /**
+     * 人才招聘
+     * @return
+     */
+    @RequestMapping("/recruitment")
+    public String recruitment(){
+        return "recruitment";
+    }
 }
