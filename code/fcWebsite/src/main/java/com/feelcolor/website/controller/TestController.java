@@ -78,13 +78,13 @@ public class TestController {
 //            return statmentM;
 //        }
         
-        List<Integer> integerList = Arrays.asList(5, 2, 4, 3, 1, 6, 7,1,3,5);
+        List<Integer> integerList = Arrays.asList(5, 2, 4, 3, 1, 6, 7, 1, 3, 5);
         List<String> stringList = Arrays.asList("a", "asds", ".net", "java", "hello java", "javalambda", "ccc");
         List<UserInfo> userList = new ArrayList<UserInfo>();
-        userList.add(new UserInfo("1", "Mahesh",17));
-        userList.add(new UserInfo("2", "Suresh",13));
-        userList.add(new UserInfo("3", "Nilesh",15));
-        userList.add(new UserInfo("4", "csh",15));
+        userList.add(new UserInfo("1", "Mahesh", 17));
+        userList.add(new UserInfo("2", "Suresh", 13));
+        userList.add(new UserInfo("3", "Nilesh", 15));
+        userList.add(new UserInfo("4", "csh", 15));
         
 //        分组
 //        Map<Integer, List<UserInfo>> groupList = userList.stream().collect(Collectors.groupingBy(UserInfo::getAge));

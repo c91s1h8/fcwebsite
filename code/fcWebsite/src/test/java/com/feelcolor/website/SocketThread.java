@@ -9,6 +9,7 @@ public class SocketThread extends Thread {
     private PrintWriter pw;
 
     public SocketThread(Socket socket) {
+        System.out.println("init====================================");
         this.socket = socket;
         try {
             this.br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -20,6 +21,7 @@ public class SocketThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println("run====================================");
         while (true){
             try {
                 String str  = br.readLine();

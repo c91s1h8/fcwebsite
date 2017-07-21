@@ -3,7 +3,7 @@ package com.feelcolor.website;
 import java.io.*;
 import java.net.Socket;
 
-public class SocketClient {
+public class SocketClient2 {
     private static final String host = "192.168.2.183";
     private static final int port = 10088;
 
