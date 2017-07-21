@@ -8,11 +8,12 @@ public class SocketClient {
     private static final int port = 10088;
 
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket(host, port);
-        if (socket.isConnected()) {
-            InputStream is;
-            OutputStream os;
-            while (true) {
+        while (true) {
+            Socket socket = new Socket(host, port);
+            if (socket.isConnected()) {
+                InputStream is;
+                OutputStream os;
+
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 String in = br.readLine();
                 os = socket.getOutputStream();
