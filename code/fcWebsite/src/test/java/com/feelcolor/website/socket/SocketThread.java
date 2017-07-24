@@ -8,7 +8,7 @@ public class SocketThread extends Thread {
     private BufferedReader br;
     private PrintWriter pw;
 
-    private SocketThread(Socket socket) {
+    public SocketThread(Socket socket) {
         System.out.println("init====================================");
         this.socket = socket;
         try {
