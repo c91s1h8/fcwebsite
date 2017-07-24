@@ -1,4 +1,4 @@
-package com.feelcolor.website;
+package com.feelcolor.website.socket;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,7 +8,7 @@ public class SocketThread extends Thread {
     private BufferedReader br;
     private PrintWriter pw;
 
-    public SocketThread(Socket socket) {
+    private SocketThread(Socket socket) {
         System.out.println("init====================================");
         this.socket = socket;
         try {

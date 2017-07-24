@@ -1,4 +1,4 @@
-package com.feelcolor.website;
+package com.feelcolor.website.socket;
 
 import java.io.*;
 import java.net.Socket;
