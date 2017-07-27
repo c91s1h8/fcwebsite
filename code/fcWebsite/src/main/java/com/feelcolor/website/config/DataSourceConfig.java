@@ -27,6 +27,7 @@ public class DataSourceConfig {
     public DataSource dataSource(){
         log.info("==============================创建数据源==============================");
         DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setDriverClassName(druidConfig.getDirverClassName());
         dataSource.setUrl(druidConfig.getUrl());
         dataSource.setUsername(druidConfig.getUsername());
         dataSource.setPassword(druidConfig.getPassword());

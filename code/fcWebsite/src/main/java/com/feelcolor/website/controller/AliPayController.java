@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,8 +21,9 @@ import com.feelcolor.website.model.vo.AlipayNotifyRecordVo;
 import com.feelcolor.website.service.AliPayService;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("aliPay")
 @Slf4j
 public class AliPayController {
@@ -29,14 +31,14 @@ public class AliPayController {
     private AliPayService aliPayService;
 
     @RequestMapping("/pay")
-    @ResponseBody
+    @ApiOperation(value = "支付宝付款", httpMethod = "POST")
     public String pay(String orderNo, String totalAmount, String orderName, String description)
             throws AlipayApiException {
         return aliPayService.pay(orderNo, totalAmount, orderName, description);
     }
 
     @RequestMapping("/notify")
-    @ResponseBody
+    @ApiOperation(value = "支付宝回调", httpMethod = "POST")
     public String notify(HttpServletRequest request)
             throws UnsupportedEncodingException, AlipayApiException, ParseException {
         log.info("===================支付宝回调======================");
@@ -58,8 +60,8 @@ public class AliPayController {
         return aliPayService.processNofifyRecord(params);
     }
 
+    @ApiOperation(value = "支付查询", httpMethod = "POST")
     @RequestMapping("/tradeQuery")
-    @ResponseBody
     public String tradeQuery(String orderNo, String tradeNo) throws AlipayApiException {
         return aliPayService.tradeQuery(orderNo, tradeNo);
     }

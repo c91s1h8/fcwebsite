@@ -20,4 +20,5 @@ public class DruidConfig {
     private int minIdle;
     private int initialSize;
     private boolean testOnBorrow;
+    private String dirverClassName;
 }

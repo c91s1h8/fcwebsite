@@ -2,6 +2,7 @@ package com.feelcolor.website.controller;
 
 import javax.annotation.Resource;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class UserInfoController {
     UserInfoService userInfoService;
 
     @RequestMapping("/getUserById")
+    @ApiOperation(value = "通过id查询用户", httpMethod = "POST")
     public @ResponseBody UserInfo getUserById(String id){
         log.info("cccccccccccccccccccccccccccccccccccccccccccccccc");
         log.info("ddddddddddddddddddddddddddddddddddddddddddddddddd");
@@ -27,6 +29,7 @@ public class UserInfoController {
     }
     
     @RequestMapping("/test")
+    @ApiOperation(value = "test", httpMethod = "GET")
     public @ResponseBody String test()throws RuntimeException{
         userInfoService.test();
         return "";
