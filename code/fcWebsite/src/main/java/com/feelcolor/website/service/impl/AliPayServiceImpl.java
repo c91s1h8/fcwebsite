@@ -28,10 +28,10 @@ import lombok.extern.slf4j.Slf4j;
 public class AliPayServiceImpl implements AliPayService {
 
     @Resource
-    AlipayClient alipayClient;
+    private AlipayClient alipayClient;
 
     @Resource
-    AlipayNotifyRecordMapper alipayNotifyRecordMapper;
+    private AlipayNotifyRecordMapper alipayNotifyRecordMapper;
 
     @Override
     public String pay(String orderNo, String totalAmount, String orderName, String description)
