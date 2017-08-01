@@ -175,7 +175,7 @@
     position: relative;
     left: 3px;
     top: 0;
-    z-index: 5; #
+    z-index: 5;
     margin-left: -10px;
 }
 
@@ -206,7 +206,7 @@
     top: 11px;
     z-index: 4;
     background: url(images/zoom.jpg) no-repeat 0 0;
-    padding-left: 25px; #
+    padding-left: 25px;
     top: 11px;
 }
 

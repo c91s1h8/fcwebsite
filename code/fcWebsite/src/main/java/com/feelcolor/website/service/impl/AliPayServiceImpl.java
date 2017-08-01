@@ -29,6 +29,9 @@ public class AliPayServiceImpl implements AliPayService {
 
     @Resource
     private AlipayClient alipayClient;
+    @Resource
+    private AlipayConfig aipayConfig;
+
 
     @Resource
     private AlipayNotifyRecordMapper alipayNotifyRecordMapper;
@@ -37,8 +40,8 @@ public class AliPayServiceImpl implements AliPayService {
     public String pay(String orderNo, String totalAmount, String orderName, String description)
             throws AlipayApiException {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-        alipayRequest.setReturnUrl(AlipayConfig.return_url);
-        alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
+        alipayRequest.setReturnUrl(aipayConfig.getReturn_url());
+        alipayRequest.setNotifyUrl(aipayConfig.getNotify_url());
 
         alipayRequest.setBizContent("{\"out_trade_no\":\"" + orderNo + "\"," + "\"total_amount\":\"" + totalAmount
                 + "\"," + "\"subject\":\"" + orderName + "\"," + "\"body\":\"" + description + "\","
@@ -53,8 +56,8 @@ public class AliPayServiceImpl implements AliPayService {
         String sign = params.get("sign").toString();
         String sign_type = params.get("sign_type").toString();
 
-        boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset,
-                AlipayConfig.sign_type); // 调用SDK验证签名
+        boolean signVerified = AlipaySignature.rsaCheckV1(params, aipayConfig.alipay_public_key, aipayConfig.getCharset(),
+                aipayConfig.getSign_type()); // 调用SDK验证签名
 
         
         if (signVerified) {// 验证成功
