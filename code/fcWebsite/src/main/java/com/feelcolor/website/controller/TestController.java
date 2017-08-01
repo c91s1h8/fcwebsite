@@ -129,7 +129,6 @@ public class TestController {
             try {
                 myArray[i] = SecureRandom.getInstanceStrong().nextDouble();
             } catch (NoSuchAlgorithmException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
