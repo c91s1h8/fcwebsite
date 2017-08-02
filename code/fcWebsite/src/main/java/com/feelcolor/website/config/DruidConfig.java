@@ -6,10 +6,11 @@ import lombok.Data;
 
 /**
  * 将properties属性注入到bean中
+ * 
  * @author Administrator
  *
  */
-@ConfigurationProperties(prefix="druid")    //自动注入properties中druid开头的属性到变量中
+@ConfigurationProperties(prefix = "druid") // 自动注入properties中druid开头的属性到变量中
 @Data
 public class DruidConfig {
 
