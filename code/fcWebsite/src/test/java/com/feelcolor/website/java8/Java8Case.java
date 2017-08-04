@@ -4,7 +4,11 @@ import com.feelcolor.website.model.po.UserInfo;
 import org.apache.catalina.User;
 
 import javax.jws.soap.SOAPBinding;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -33,8 +37,13 @@ public class Java8Case {
         // System.out.println(statistics(userList).getAverage());
         // filterByMethod(userList).forEach(System.out::println);
         // System.out.println(groupByAge(userList));
-//        System.out.println(partitionByAge(userList, 15));
-        System.out.println(getMaxByAge(userList));
+        // System.out.println(partitionByAge(userList, 15));
+        // System.out.println(getMaxByAge(userList));
+//        sumByReduce(integerList);
+//        userList.stream().map(UserInfo::getName).collect(Collectors.toList()).forEach(System.out::println);
+//        paralleMap(userList).forEach(System.out::println);
+//        paralleFilter(userList,14).forEach(System.out::println);
+        forEach(integerList);
     }
 
 
@@ -100,7 +109,11 @@ public class Java8Case {
      * @return
      */
     public static Integer sumByReduce(List<Integer> list) {
-        return list.stream().reduce((a, b) -> a + b).orElse(0);
+        return list.stream().reduce((a, b) -> {
+            System.out.println("我是上次执行结果：" + a);
+            System.out.println("我是stream中元素：" + b);
+            return a + b;
+        }).orElse(0);
     }
 
     /**
@@ -229,6 +242,7 @@ public class Java8Case {
 
     /**
      * 返回age最大的对象
+     * 
      * @param list
      * @return
      */
@@ -243,20 +257,61 @@ public class Java8Case {
 
     /**
      * 根据comparator排序
+     * 
      * @param list
      * @return
      */
-    public static List<UserInfo> sort(List<UserInfo> list){
+    public static List<UserInfo> sort(List<UserInfo> list) {
         return list.stream().sorted(Comparator.comparing(UserInfo::getAge)).collect(Collectors.toList());
     }
 
     /**
      * 反转排序
+     * 
      * @param list
      * @return
      */
-    public static List<UserInfo> reversed(List<UserInfo> list){
+    public static List<UserInfo> reversed(List<UserInfo> list) {
         return list.stream().sorted(Comparator.comparing(UserInfo::getAge).reversed()).collect(Collectors.toList());
+    }
+
+    /**
+     * 并行Stream map Function
+     * @param list
+     * @return
+     */
+    public static List<UserInfo> paralleMap(List<UserInfo> list){
+        return list.parallelStream().map(new Function<UserInfo, UserInfo>() {
+            @Override
+            public UserInfo apply(UserInfo userInfo) {
+                userInfo.setAge(userInfo.getAge()+10);
+                return userInfo;
+            }
+        }).collect(Collectors.toList());
+    }
+
+    /**
+     * 并行Stream filter Predicate
+     * @param list
+     * @param num
+     * @return
+     */
+    public static List<UserInfo> paralleFilter(List<UserInfo> list,Integer num){
+        return list.parallelStream().filter(new Predicate<UserInfo>() {
+            @Override
+            public boolean test(UserInfo userInfo) {
+                return Integer.compare(userInfo.getAge(),num)>0;
+            }
+        }).collect(Collectors.toList());
+    }
+
+    public static void forEach(List<?> list){
+         list.stream().forEach(new Consumer<Object>() {
+            @Override
+            public void accept(Object o) {
+                System.out.println(o);
+            }
+        });
     }
 
 }
