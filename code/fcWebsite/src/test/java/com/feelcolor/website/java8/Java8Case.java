@@ -39,13 +39,14 @@ public class Java8Case {
         // System.out.println(groupByAge(userList));
         // System.out.println(partitionByAge(userList, 15));
         // System.out.println(getMaxByAge(userList));
-//        sumByReduce(integerList);
-//        userList.stream().map(UserInfo::getName).collect(Collectors.toList()).forEach(System.out::println);
-//        paralleMap(userList).forEach(System.out::println);
-//        paralleFilter(userList,14).forEach(System.out::println);
-        forEach(integerList);
+        // sumByReduce(integerList);
+        // userList.stream().map(UserInfo::getName).collect(Collectors.toList()).forEach(System.out::println);
+        // paralleMap(userList).forEach(System.out::println);
+        // paralleFilter(userList,14).forEach(System.out::println);
+        // forEach(integerList);
+//        getUser(new UserInfo());
+        System.out.println(orElseGet(new UserInfo()));
     }
-
 
     /**
      * 合并两个Stream
@@ -277,14 +278,15 @@ public class Java8Case {
 
     /**
      * 并行Stream map Function
+     * 
      * @param list
      * @return
      */
-    public static List<UserInfo> paralleMap(List<UserInfo> list){
+    public static List<UserInfo> paralleMap(List<UserInfo> list) {
         return list.parallelStream().map(new Function<UserInfo, UserInfo>() {
             @Override
             public UserInfo apply(UserInfo userInfo) {
-                userInfo.setAge(userInfo.getAge()+10);
+                userInfo.setAge(userInfo.getAge() + 10);
                 return userInfo;
             }
         }).collect(Collectors.toList());
@@ -292,24 +294,55 @@ public class Java8Case {
 
     /**
      * 并行Stream filter Predicate
+     * 
      * @param list
      * @param num
      * @return
      */
-    public static List<UserInfo> paralleFilter(List<UserInfo> list,Integer num){
+    public static List<UserInfo> paralleFilter(List<UserInfo> list, Integer num) {
         return list.parallelStream().filter(new Predicate<UserInfo>() {
             @Override
             public boolean test(UserInfo userInfo) {
-                return Integer.compare(userInfo.getAge(),num)>0;
+                return Integer.compare(userInfo.getAge(), num) > 0;
             }
         }).collect(Collectors.toList());
     }
 
-    public static void forEach(List<?> list){
-         list.stream().forEach(new Consumer<Object>() {
+    public static void forEach(List<?> list) {
+        list.stream().forEach(new Consumer<Object>() {
             @Override
             public void accept(Object o) {
                 System.out.println(o);
+            }
+        });
+    }
+
+    /**
+     * 如果user不是null 则执行输出
+     * 
+     * @param user
+     */
+    public static void ifPresent(UserInfo user) {
+        Optional<UserInfo> userInfo = Optional.ofNullable(user);
+        userInfo.ifPresent(new Consumer<UserInfo>() {
+            @Override
+            public void accept(UserInfo userInfo) {
+                System.out.println(userInfo);
+            }
+        });
+    }
+
+    /**
+     * 如果为null 则利用方法进行创建返回
+     * @param userInfo
+     * @return
+     */
+    public static UserInfo orElseGet(UserInfo userInfo) {
+        Optional<UserInfo> userInfoOptional = Optional.ofNullable(userInfo);
+        return userInfoOptional.orElseGet(new Supplier<UserInfo>() {
+            @Override
+            public UserInfo get() {
+                return new UserInfo("111", "22", 12);
             }
         });
     }

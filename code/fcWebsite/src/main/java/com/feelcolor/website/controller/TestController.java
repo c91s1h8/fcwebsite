@@ -77,34 +77,25 @@ public class TestController {
         return redisTemplate.opsForValue().get(str);
     }
 
+    @ApiOperation("测试ThreadPool")
+    @RequestMapping(value = "/test4", method = RequestMethod.POST)
+    @ResponseBody
+    public void test4(){
+        for (int i =0;i<200;i++){
+            int finalI = i;
+            threadPoolTaskExecutor.execute(new Thread(()->{
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("============"+ finalI);
+            }));
+        }
+
+    }
+
     public static void main(String[] args) {
-        // lambda表达式结构
-        // (Type param1, param2, .....) -> {
-        // statment1;
-        // statment2;
-        // ....
-        // return statmentM;
-        // }
-
-        List<Integer> integerList = Arrays.asList(5, 2, 4, 3, 1, 6, 7, 1, 3, 5);
-        List<String> stringList = Arrays.asList("a", "asds", ".net", "java", "hello java", "javalambda", "ccc");
-        List<UserInfo> userList = new ArrayList<UserInfo>();
-        userList.add(new UserInfo("1", "Mahesh", 17));
-        userList.add(new UserInfo("2", "Suresh", 13));
-        userList.add(new UserInfo("3", "Nilesh", 15));
-        userList.add(new UserInfo("4", "csh", 15));
-
-        // ====================================================================================================================================
-        // double[] myArray = new double[100000];
-        // for (int i = 0; i < 100000; i++) {
-        // try {
-        // myArray[i] = SecureRandom.getInstanceStrong().nextDouble();
-        // } catch (NoSuchAlgorithmException e) {
-        // e.printStackTrace();
-        // }
-        // }
-        // Arrays.parallelSort(myArray);
-        // Stream.of(myArray).forEach(System.out::println);
 
     }
 

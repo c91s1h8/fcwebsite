@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("itemList")
 public class ItemListController {
-    
+
     @RequestMapping("/all")
     @ApiOperation(value = "商品列表", httpMethod = "GET")
-    public String itemList(){
+    public String itemList() {
         return "itemList";
     }
 
