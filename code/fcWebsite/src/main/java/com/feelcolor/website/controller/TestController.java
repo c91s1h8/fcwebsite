@@ -102,6 +102,8 @@ public class TestController {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSS");  //yyyy-MM-dd'T'HH:mm:ss.SSSZ
         Date  date = df.parse("2017-08-09T10:12:34.0291");
         System.out.println(date);
+
+//        System.out.println(DateUtil);
     }
 
 }
