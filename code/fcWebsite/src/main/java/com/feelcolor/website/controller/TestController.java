@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -95,8 +98,10 @@ public class TestController {
 
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSS");  //yyyy-MM-dd'T'HH:mm:ss.SSSZ
+        Date  date = df.parse("2017-08-09T10:12:34.0291");
+        System.out.println(date);
     }
 
 }
