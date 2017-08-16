@@ -4,6 +4,7 @@ import com.feelcolor.website.dao.mapper.UserInfoMapper;
 import com.feelcolor.website.model.po.UserInfo;
 import com.feelcolor.website.service.UserInfo2Service;
 import com.feelcolor.website.service.UserInfoService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,7 +17,8 @@ import java.util.List;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
-
+    @Value("${app.socket.port}")
+    private Integer port;
     @Resource
     private UserInfoMapper userInfoMapper;
 

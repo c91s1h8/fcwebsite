@@ -110,7 +110,7 @@
         <dependency>
             <groupId>com.feelcolor.utils</groupId>
             <artifactId>fc-utils</artifactId>
-            <version>0.0.2.RELEASE</version>
+            <version>0.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.feelcolor.pay</groupId>
@@ -122,7 +122,6 @@
             <artifactId>alipay-sdk-java</artifactId>
             <version>1.5</version>
         </dependency>
-
 
     </dependencies>
     <!-- 仓库地址 -->

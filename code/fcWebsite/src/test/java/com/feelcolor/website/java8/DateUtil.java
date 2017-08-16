@@ -5,7 +5,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class DateUtil {
+public final class  DateUtil {
     public static final ZoneId ZONE = ZoneId.systemDefault();
 
     public static final String DEFAULT_FMT_STR = "yyyy-MM-dd HH:mm:ss";

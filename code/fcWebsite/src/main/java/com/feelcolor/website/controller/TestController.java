@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -99,11 +100,8 @@ public class TestController {
     }
 
     public static void main(String[] args) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSS");  //yyyy-MM-dd'T'HH:mm:ss.SSSZ
-        Date  date = df.parse("2017-08-09T10:12:34.0291");
-        System.out.println(date);
+    String[] a ={"1","2"};
 
-//        System.out.println(DateUtil);
     }
 
 }
