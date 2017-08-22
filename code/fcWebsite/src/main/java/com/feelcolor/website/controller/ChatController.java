@@ -46,4 +46,12 @@ public class ChatController {
         tcpClient.sendMsg(msg);
         return "加入聊天室成功";
     }
+
+    @RequestMapping("/getServerStatus")
+    @ResponseBody
+    @ApiOperation(value = "向服务器发送消息", httpMethod = "GET")
+    public String getServerStatus(String msg){
+        tcpClient.sendMsg(msg);
+        return "加入聊天室成功";
+    }
 }
