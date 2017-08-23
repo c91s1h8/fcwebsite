@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title th:text="#{websiteTitle}"></title>
-    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fc.css}"/>
 
-    <link rel="stylesheet" th:href="@{/js/video/video-js.css}" />
+    <link rel="stylesheet" th:href="@{/js/video/video-js.css}"/>
 
     <script th:src="@{/js/video/video.js}"></script>
     <script th:src="@{/js/video/videojs-ie8.min.js}"></script>
 
     <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
-    
+
     <style>
-    .breadcrumb-nav {
-        padding:52px 0;
-        background: #f7f8f9;
-    }
-    
-    .breadcrumb-nav .title {
-        color: #44a8f2;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        font-weight: 300;
-        font-size: 36px;
-    }
-    
-    .breadcrumb {
-        margin: 0;
-        background: 0 0;
-        color: #707473;
-        text-transform: capitalize;
-        font-weight: 300;
-        font-size: 12px;
-        padding: 0 0 0 3px
-    }
-    .ol, ul{
-        list-style:none;
-        vertical-align:baseline;
-    }
+        .banner {
+            height: 450px;
+            background: url(//www4.djicdn.com/assets/images/img/contact-banner-8cf79cf4ad2eff58c62363c68f98bba5.jpg);
+            background-color: #edeff3
+        }
+
+        .breadcrumb-nav .title {
+            color: #44a8f2;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-weight: 300;
+            font-size: 36px;
+        }
+
+        .breadcrumb {
+            margin: 0;
+            background: 0 0;
+            color: #707473;
+            text-transform: capitalize;
+            font-weight: 300;
+            font-size: 12px;
+            padding: 0 0 0 3px
+        }
+
+        .ol, ul {
+            list-style: none;
+            vertical-align: baseline;
+        }
     </style>
 
 </head>
 <body>
-    <!-- Static navbar -->
-    <div th:include="nav :: nav"></div> 
+<!-- Static navbar -->
+<div th:include="nav :: nav"></div>
 
-    <div class="breadcrumb-nav">
-        <div class="container">
-            <h1 class="title">
-                <span>人才招聘</span>
-            </h1>
-            <ul class="breadcrumb">
-                <li><a href="/">首页</a></li>
-                <li>人才招聘</li>
-            </ul>
+<div class="banner">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10">
+            <h2>关于我们</h2>
+            <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+
+
+            <p>
+                深圳市大疆创新科技有限公司(DJI-Innovations，简称DJI)，成立于2006年，是全球领先的无人飞行器控制系统及无人机解决方案的研发和生产商，客户遍布全球100多个国家。通过持续的创新，大疆致力于为无人机工业、行业用户以及专业航拍应用提供性能最强、体验最佳的革命性智能飞控产品和解决方案。
+            </p>
+
+            <p>
+                深圳市大疆百旺科技有限公司是大疆创新旗下全资子公司，专业致力于无人驾驶飞行器的高科技智能化制造工厂, 于2016年通过SGS机构的ISO9001：2015质量管理体系认证。
+            </p>
+
+            <p>
+                “我常常在想，皇帝穿着所谓最美的新衣游街，却只有孩子敢指出真相。而现在的社会有那么多的问题，却连敢大声指责的孩子都没有了。几十年间，我们的经济发展取得了显著成就，然而我们却鲜有能够打动世界的科技产品、文学及艺术作品，缺少文化价值观的输出，只能对舶来文化趋之若鹜。
+                DJI就是个敢于说真话的孩子。这里由一群从不妥协、极富洞见、坚持梦想的人聚合而成。我们坚信实干而非投机，坚信梦想而非功利。我们坚决践行全新的文化价值观和思维方法论，从创始之初至今从未改变。
+                事实上，没有不需要埋头苦干就能获得的成功，没有只靠夸夸其谈就能创造的财富，没有从天而降的高科技。追求卓越，需要无数苦思冥想的深夜，需要连续工作72小时的执着，更需要敢于大声说出真相的勇气。
+                十年间，DJI站在了行业之巅，开启全球飞行影像新时代，展现出改造世界的无限可能。我们的经历证明，一个初出茅庐的年轻人不去曲意逢迎、不去投机取巧，只要踏实做事，同样能够取得成功。我们相信，那些回归常识、尊重奋斗的人，终将洞见时代机遇，并最终改变世界。
+                DJI是一个创新的乌托邦，我们搭建了一个尊重梦想的舞台，构建了纯粹的企业环境，努力探索卓尔不群的产品之道和企业文化。没有一家公司像DJI一样，将求真品诚的理念贯穿到每一个细节，对此我们引以为傲。
+                大道无疆，创新无限。如果你志存高远、怀揣梦想，决心踏实做事、创造价值，却在扭曲的现实中自我怀疑、彷徨无奈，那就加入DJI吧！ 在这里，与更多真知灼见者碰撞，与更多志同道合者同行！
+                未来，无所不能！”
+            </p>
+
+            <h2>了解我们</h2>
+            <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+            <video id="example_video_1" poster="MY_VIDEO_POSTER.jpg" autoplay="autoplay" class="vjs-default-skin"
+                   preload="auto" controls>
+                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
+                <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
+                <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg"/>
+            </video>
+        </div>
+        <div class="col-sm-1">
         </div>
     </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-8">
-                <video id="example_video_1" poster="MY_VIDEO_POSTER.jpg" autoplay="autoplay" class="vjs-default-skin" preload="auto" controls width="100%" height="300">
-                    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
-                    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
-                    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg"/>
-                </video>
-            </div>
-            <div class="col-sm-2">
-            </div>
-        </div>
-    </div>
-    
-    
-    <!-- Static footer -->
-    <div th:include="footer :: footer"></div> 
-    
-    <script>
+</div>
 
 
-    </script>
-    
+<!-- Static footer -->
+<div th:include="footer :: footer"></div>
+
+<script>
+
+
+</script>
+
 </body>
 </html>
