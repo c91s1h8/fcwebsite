@@ -39,10 +39,43 @@
         list-style:none;
         vertical-align:baseline;
     }
+    ul.nav-tabs{
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+    ul.nav-tabs li{
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+    ul.nav-tabs li:first-child a{
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+    ul.nav-tabs.affix{
+        top: 30px; /* Set the top position of pinned element */
+    }
     </style>
 
 </head>
-<body>
+<body data-spy="scroll" data-target="#myScrollspy">
     <!-- Static navbar -->
     <div th:include="nav :: nav"></div> 
 
@@ -57,10 +90,73 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row">
+            <div class="col-xs-2" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                    <li class="active"><a href="#section-1">技术类</a></li>
+                    <li><a href="#section-2">财务类</a></li>
+                    <li><a href="#section-3">市场类</a></li>
+                    <li><a href="#section-4">投资类</a></li>
+                    <li><a href="#section-5">其他类</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-10">
+                <h2 id="section-1">技术类</h2>
+                <h4>Java开发工程师</h4>
+                <p>1.计算机或相关本科学历，三年以上Java程序开发经验，有互联网金融开发经验优先；</p>
+                <p>  2.熟悉MVC,熟练掌握Struts,Spring,Hibernate技术；</p>
+                <p>  3.精通Java语言和面向对象设计方法，熟悉JSP、Servlet、ORM；</p>
+                <p>  4.了解J2EE构架及中间件、XML等相关技术知识；</p>
+                <p>  5.多个web项目开发经验,熟悉html,javascript,jquery,div,CSS等常用web技术和知识；</p>
+                <p>   6.熟悉eclipse,svn等开发工具,熟悉tomcat/resin/weblogic等常用应用服务器；</p>
+                <p>   7.理解OOD和OOP并能熟练运用各种设计模式；</p>
+                <p>  8.熟悉关系数据库理论，有SQL Server/MySQL、Oracle等数据库编程开发经验。</p>
+                <hr>
+                <h4>数据库工程师</h4>
+                <p>   1、精通数据库原理及分布式数据库架构设计；</p>
+                <p>   2、精通Oracle（RAC）、SQL Server和MySQL数据库，熟练编写SQL脚本；</p>
+                <p>   3、精通Linux操作系统和shell脚本，掌握常用自动化运维工具；</p>
+                <p>   4、具有良好的英语阅读能力；</p>
+                <p>   5、计算机科学、信息科学或其他相关专业本科以上学历。</p>
+                <hr>
+                <h4>测试工程师</h4>
+                <p>   1、本科及以上学历，计算机相关专业；</p>
+                <p>   2、2年以上软件测试工作经验；</p>
+                <p>   3、掌握各种软件测试测试技术、方法并能理解应用；</p>
+                <p>   4、掌握软件测试理论、测试流程及方法；</p>
+                <p>   5、学习能力强，具备较强的沟通能力、抗压能力；</p>
+                <p>   6、热爱测试，善于发现、分析总结问题，责任心强；</p>
+                <p>   7、熟悉Linux、windows操作系统，熟悉SQLServer数据库；</p>
+                <p>   8、熟悉性能测试工具，如lr。</p>
+                <hr>
+                <h2 id="section-2">财务类</h2>
+                <h4>出纳</h4>
+                <p>   1、统招大学专科以上学历，具备初级以上会计师职称者优先。</p>
+                <p>   2、熟练应用金蝶、用友财务软件及各种办公软件。</p>
+                <p>   3、遵纪守法、品行端正、坚持原则，工作积极、具有较强的责任心，团结同事、易于相处。</p>
+                <p>   4、具有2年以上的工作经验者优先，北京户籍优先。</p>
 
+                <hr>
+                <h2 id="section-3">市场类</h2>
+                <p>Integer pulvinar leo id risus pellentesque vestibulum. Sed diam libero, sodales eget sapien vel, porttitor bibendum enim. Donec sed nibh vitae lorem porttitor blandit in nec ante. Pellentesque vitae metus ipsum. Phasellus sed nunc ac sem malesuada condimentum. Etiam in aliquam lectus. Nam vel sapien diam. Donec pharetra id arcu eget blandit. Proin imperdiet mattis augue in porttitor. Quisque tempus enim id lobortis feugiat. Suspendisse tincidunt risus quis dolor fringilla blandit. Ut sed sapien at purus lacinia porttitor. Nullam iaculis, felis a pretium ornare, dolor nisl semper tortor, vel sagittis lacus est consequat eros. Sed id pretium nisl. Curabitur dolor nisl, laoreet vitae aliquam id, tincidunt sit amet mauris.</p>
+                <p>Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget ante rutrum adipiscing. Cras interdum ipsum mattis, tempus mauris vel, semper ipsum. Duis sed dolor ut enim lobortis pellentesque ultricies ac ligula. Pellentesque convallis elit nisi, id vulputate ipsum ullamcorper ut. Cras ac pulvinar purus, ac viverra est. Suspendisse potenti. Integer pellentesque neque et elementum tempus. Curabitur bibendum in ligula ut rhoncus.</p>
+                <p>Quisque pharetra velit id velit iaculis pretium. Nullam a justo sed ligula porta semper eu quis enim. Pellentesque pellentesque, metus at facilisis hendrerit, lectus velit facilisis leo, quis volutpat turpis arcu quis enim. Nulla viverra lorem elementum interdum ultricies. Suspendisse accumsan quam nec ante mollis tempus. Morbi vel accumsan diam, eget convallis tellus. Suspendisse potenti.</p>
+                <hr>
+                <h2 id="section-4">投资类</h2>
+                <p>Suspendisse a orci facilisis, dignissim tortor vitae, ultrices mi. Vestibulum a iaculis lacus. Phasellus vitae convallis ligula, nec volutpat tellus. Vivamus scelerisque mollis nisl, nec vehicula elit egestas a. Sed luctus metus id mi gravida, faucibus convallis neque pretium. Maecenas quis sapien ut leo fringilla tempor vitae sit amet leo. Donec imperdiet tempus placerat. Pellentesque pulvinar ultrices nunc sed ultrices. Morbi vel mi pretium, fermentum lacus et, viverra tellus. Phasellus sodales libero nec dui convallis, sit amet fermentum sapien auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eu elementum nibh, quis varius libero.</p>
+                <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit at lacus blandit, commodo iaculis justo viverra. Etiam vitae est arcu. Mauris vel congue dolor. Aliquam eget mi mi. Fusce quam tortor, commodo ac dui quis, bibendum viverra erat. Maecenas mattis lectus enim, quis tincidunt dui molestie euismod. Curabitur et diam tristique, accumsan nunc eu, hendrerit tellus.</p>
+                <p>Phasellus fermentum, neque sit amet sodales tempor, enim ante interdum eros, eget luctus ipsum eros ut ligula. Nunc ornare erat quis faucibus molestie. Proin malesuada consequat commodo. Mauris iaculis, eros ut dapibus luctus, massa enim elementum purus, sit amet tristique purus purus nec felis. Morbi vestibulum sapien eget porta pulvinar. Nam at quam diam. Proin rhoncus, felis elementum accumsan dictum, felis nisi vestibulum tellus, et ultrices risus felis in orci. Quisque vestibulum sem nisl, vel congue leo dictum nec. Cras eget est at velit sagittis ullamcorper vel et lectus. In hac habitasse platea dictumst. Etiam interdum iaculis velit, vel sollicitudin lorem feugiat sit amet. Etiam luctus, quam sed sodales aliquam, lorem libero hendrerit urna, faucibus rhoncus massa nibh at felis. Curabitur ac tempus nulla, ut semper erat. Vivamus porta ullamcorper sem, ornare egestas mauris facilisis id.</p>
+                <p>Ut ut risus nisl. Fusce porttitor eros at magna luctus, non congue nulla eleifend. Aenean porttitor feugiat dolor sit amet facilisis. Pellentesque venenatis magna et risus commodo, a commodo turpis gravida. Nam mollis massa dapibus urna aliquet, quis iaculis elit sodales. Sed eget ornare orci, eu malesuada justo. Nunc lacus augue, dictum quis dui id, lacinia congue quam. Nulla sem sem, aliquam nec dolor ac, tempus convallis nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla suscipit convallis iaculis. Quisque eget commodo ligula. Praesent leo dui, facilisis quis eleifend in, aliquet vitae nunc. Suspendisse fermentum odio ac massa ultricies pellentesque. Fusce eu suscipit massa.</p>
+                <hr>
+                <h2 id="section-5">其他类</h2>
+                <p>Nam eget purus nec est consectetur vehicula. Nullam ultrices nisl risus, in viverra libero egestas sit amet. Etiam porttitor dolor non eros pulvinar malesuada. Vestibulum sit amet est mollis nulla tempus aliquet. Praesent luctus hendrerit arcu non laoreet. Morbi consequat placerat magna, ac ornare odio sagittis sed. Donec vitae ullamcorper purus. Vivamus non metus ac justo porta volutpat.</p>
+                <p>Vivamus mattis accumsan erat, vel convallis risus pretium nec. Integer nunc nulla, viverra ut sem non, scelerisque vehicula arcu. Fusce bibendum convallis augue sit amet lobortis. Cras porta urna turpis, sodales lobortis purus adipiscing id. Maecenas ullamcorper, turpis suscipit pellentesque fringilla, massa lacus pulvinar mi, nec dignissim velit arcu eget purus. Nam at dapibus tellus, eget euismod nisl. Ut eget venenatis sapien. Vivamus vulputate varius mauris, vel varius nisl facilisis ac. Nulla aliquet justo a nibh ornare, eu congue neque rutrum.</p>
+                <p>Suspendisse a orci facilisis, dignissim tortor vitae, ultrices mi. Vestibulum a iaculis lacus. Phasellus vitae convallis ligula, nec volutpat tellus. Vivamus scelerisque mollis nisl, nec vehicula elit egestas a. Sed luctus metus id mi gravida, faucibus convallis neque pretium. Maecenas quis sapien ut leo fringilla tempor vitae sit amet leo. Donec imperdiet tempus placerat. Pellentesque pulvinar ultrices nunc sed ultrices. Morbi vel mi pretium, fermentum lacus et, viverra tellus. Phasellus sodales libero nec dui convallis, sit amet fermentum sapien auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eu elementum nibh, quis varius libero.</p>
+                <p>Morbi sed fermentum ipsum. Morbi a orci vulputate tortor ornare blandit a quis orci. Donec aliquam sodales gravida. In ut ullamcorper nisi, ac pretium velit. Vestibulum vitae lectus volutpat, consequat lorem sit amet, pulvinar tellus. In tincidunt vel leo eget pulvinar. Curabitur a eros non lacus malesuada aliquam. Praesent et tempus odio. Integer a quam nunc. In hac habitasse platea dictumst. Aliquam porta nibh nulla, et mattis turpis placerat eget. Pellentesque dui diam, pellentesque vel gravida id, accumsan eu magna. Sed a semper arcu, ut dignissim leo.</p>
+                <p>Sed vitae lobortis diam, id molestie magna. Aliquam consequat ipsum quis est dictum ultrices. Aenean nibh velit, fringilla in diam id, blandit hendrerit lacus. Donec vehicula rutrum tellus eget fermentum. Pellentesque ac erat et arcu ornare tincidunt. Aliquam erat volutpat. Vivamus lobortis urna quis gravida semper. In condimentum, est a faucibus luctus, mi dolor cursus mi, id vehicula arcu risus a nibh. Pellentesque blandit sapien lacus, vel vehicula nunc feugiat sit amet.</p>
+            </div>
         </div>
     </div>
     
