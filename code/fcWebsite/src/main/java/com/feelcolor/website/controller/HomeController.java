@@ -38,4 +38,16 @@ public class HomeController {
     public String recruitment() {
         return "recruitment";
     }
+
+    /**
+     * 企业简介
+     *
+     * @return
+     */
+    @RequestMapping("/companyProfile")
+    @ApiOperation(value = "企业简介", httpMethod = "GET")
+    public String companyProfile() {
+        return "companyProfile";
+    }
+
 }

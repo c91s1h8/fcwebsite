@@ -65,21 +65,16 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-9">
-
-                <video id="my-video" class="video-js" controls  preload="auto" width="640" height="264"
-                  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+            <div class="col-sm-8">
+                <video id="example_video_1" class="vjs-default-skin" controls width="100%" height="264">
                     <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
                     <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
                     <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg"/>
-                    <p class="vjs-no-js">
-                      To view this video please enable JavaScript, and consider upgrading to a web browser that
-                      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                  </video>
-
+                </video>
+            </div>
+            <div class="col-sm-2">
             </div>
         </div>
     </div>
@@ -89,11 +84,7 @@
     <div th:include="footer :: footer"></div> 
     
     <script>
-    var myPlayer = videojs('my-video');
-    videojs("my-video").ready(function(){
-        var myPlayer = this;
-        myPlayer.play();
-    });
+
 
     </script>
     
