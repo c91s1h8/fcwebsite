@@ -99,9 +99,23 @@ public class TestController {
 
     }
 
+    @ApiOperation("测试ThreadPool")
+    @RequestMapping(value = "/test5", method = RequestMethod.GET)
+    @ResponseBody
+    public String test5(){
+     if(Math.random()>0.1){
+         return "没抢到 哈哈哈";
+     }else{
+         return "可算抢到了";
+     }
+
+    }
+
     public static void main(String[] args) throws ParseException {
     String[] a ={"1","2"};
 
     }
+
+
 
 }
