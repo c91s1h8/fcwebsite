@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+    .bg{
+        background-size:cover;
+        background:url('../images/login/login_bg.jpg') no-repeat center center;
+        min-height:850px;
+        position:relative;
+    }
+    .header-text{
+        color:#fff;
+        padding:250px 0;
+        position:relative;
+        z-index: 1;
+    }
+        .header-text-inner{
+            text-align:right;
+            border-right:2px solid #fff;
+            padding-right:35px;
+        }
+        .header.main-header:after{
+            background:rgba(0, 0, 0, .8);
+        }
+    </style>
+
+</head>
+<body>
+<!-- Static navbar -->
+    <div th:include="nav :: nav"></div>
+
+    <div class="bg">
+        <div class="header-text">
+            <div class="col-sm-6 fix-right">
+                <div class="header-text-inner">
+                    <h1>登 录</h1>
+                    <p>账号:<input type="" /></p>
+                    <p>密码:<input type="" /></p>
+                    <p><a class="btn btn-success btn-lg">Login<i class="icon icon-angle-right"></i></a></p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h2>Template Eden</h2>
+             <ul>
+                 <li>Start Bootstrap can help you build better websites using the Bootstrap CSS </li>
+                 <li>framework!</li>
+                 <li>Just download your template and start going, no strings attached!</li>
+             </ul>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+    </script>
+    
+</body>
+</html>

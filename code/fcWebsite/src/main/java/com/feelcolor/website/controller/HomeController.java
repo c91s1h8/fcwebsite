@@ -50,4 +50,15 @@ public class HomeController {
         return "companyProfile";
     }
 
+    /**
+     * 登录
+     *
+     * @return
+     */
+    @RequestMapping("/login")
+    @ApiOperation(value = "登录", httpMethod = "GET")
+    public String login() {
+        return "login";
+    }
+
 }

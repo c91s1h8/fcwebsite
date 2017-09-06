@@ -1,17 +1,14 @@
 package com.feelcolor.website.java8;
 
 import com.feelcolor.website.model.po.UserInfo;
-import org.apache.catalina.User;
 
-import javax.jws.soap.SOAPBinding;
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Java8Case {
@@ -346,5 +343,12 @@ public class Java8Case {
             }
         });
     }
+
+/*    public static Object randomBetween(int start , int end){
+        Random random = new Random();
+        IntStream intStream = random.ints(start,end);
+        List<Integer> list = intStream.limit(1).collect(Collectors.toList());
+
+    }*/
 
 }
