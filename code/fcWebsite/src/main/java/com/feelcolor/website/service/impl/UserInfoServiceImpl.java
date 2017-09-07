@@ -46,9 +46,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(readOnly = true)
     public PageImpl<UserInfo> getUserList(Integer id, String name, Integer age,
             @PageableDefault(value = 10, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable) {
-        Integer total = userInfoMapper.getTotalRecord(id, name, age);
-        List<UserInfo> list = userInfoMapper.selectWithPage(id, name, age, pageable.getOffset(),
-                pageable.getPageSize());
+//        Integer total = userInfoMapper.getTotalRecord(id, name, age);
+//        List<UserInfo> list = userInfoMapper.selectWithPage(id, name, age, pageable.getOffset(),
+//                pageable.getPageSize());
+        Integer total = null;
+        List<UserInfo> list = null;
         return new PageImpl<UserInfo>(list, pageable, total);
     }
 

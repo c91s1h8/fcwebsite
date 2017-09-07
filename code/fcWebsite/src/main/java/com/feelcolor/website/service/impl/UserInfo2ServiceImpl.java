@@ -25,7 +25,7 @@ public class UserInfo2ServiceImpl implements UserInfo2Service {
     @Transactional(rollbackFor=Exception.class)
     public void insert1(int i)throws RuntimeException{
         UserInfo u =new UserInfo();
-        u.setName(i+"");
+        u.setNickName(i+"");
         userInfoMapper.insert(u);
     }
     
@@ -33,7 +33,7 @@ public class UserInfo2ServiceImpl implements UserInfo2Service {
     public void insert2(int i) throws RuntimeException{
         if(i==3){throw new RuntimeException();}
         UserInfo u =new UserInfo();
-        u.setName(i+"");
+        u.setNickName(i+"");
         userInfoMapper.insert(u);
     }
 }

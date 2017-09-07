@@ -1,6 +1,6 @@
 package com.feelcolor.website.java8;
 
-import com.feelcolor.website.model.po.UserInfo;
+
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -8,13 +8,48 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
 import java.util.stream.Stream;
 
 public class Java8Case {
+    static class UserInfo{
+        private String id;
+        private String userName;
+        private Integer age;
+
+        public UserInfo(String id, String userName, Integer age) {
+            this.id = id;
+            this.userName = userName;
+            this.age = age;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+    }
     static List<Integer> integerList = Arrays.asList(5, 2, 4, 3, 1, 6, 7, 1, 3, 5);
     static List<String> stringList = Arrays.asList("a", "asds", ".net", "java", "hello java", "javalambda", "ccc");
-    static List<UserInfo> userList = new ArrayList<UserInfo>() {
+     List<UserInfo> userList = new ArrayList<UserInfo>() {
         {
             add(new UserInfo("1", "Mahesh", 17));
             add(new UserInfo("2", "Suresh", 13));
@@ -42,7 +77,7 @@ public class Java8Case {
         // paralleFilter(userList,14).forEach(System.out::println);
         // forEach(integerList);
 //        getUser(new UserInfo());
-        System.out.println(orElseGet(new UserInfo()));
+        //System.out.println(orElseGet(new UserInfo()));
     }
 
     /**
