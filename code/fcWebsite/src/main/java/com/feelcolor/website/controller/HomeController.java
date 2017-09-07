@@ -25,7 +25,7 @@ public class HomeController {
     @RequestMapping("/support")
     @ApiOperation(value = "服务与支持", httpMethod = "GET")
     public String support() {
-        return "support";
+        return "support/support";
     }
 
     /**
@@ -36,7 +36,7 @@ public class HomeController {
     @RequestMapping("/recruitment")
     @ApiOperation(value = "人才招聘", httpMethod = "GET")
     public String recruitment() {
-        return "recruitment";
+        return "recruitment/recruitment";
     }
 
     /**
@@ -47,7 +47,7 @@ public class HomeController {
     @RequestMapping("/companyProfile")
     @ApiOperation(value = "企业简介", httpMethod = "GET")
     public String companyProfile() {
-        return "companyProfile";
+        return "companyProfile/companyProfile";
     }
 
     /**
@@ -58,7 +58,7 @@ public class HomeController {
     @RequestMapping("/login")
     @ApiOperation(value = "登录", httpMethod = "GET")
     public String login() {
-        return "login";
+        return "login/login";
     }
 
 }

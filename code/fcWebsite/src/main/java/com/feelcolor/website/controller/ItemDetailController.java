@@ -11,6 +11,6 @@ public class ItemDetailController extends BaseController {
     @RequestMapping("/detail")
     @ApiOperation(value = "商品详情", httpMethod = "GET")
     public String Detail() {
-        return "itemDetail";
+        return "mall/itemDetail";
     }
 }

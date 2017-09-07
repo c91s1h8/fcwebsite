@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+        .itemSection{
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Static navbar -->
+    <div th:include="nav :: nav"></div> 
+    
+    <div class="row" style="margin-right:0px"> 
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+             <div class="lanren-search-form">
+                <div id="search-hd" class="search-hd">
+                    <div class="search-bg"></div>
+                    <input type="text" id="s1" class="search-input"/>
+                    <input type="text" id="s2" class="search-input"/>
+                    <button id="submit" class="btn-search" value="搜索">搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+       
+    <div class="container">
+         <div class="row">
+            <div class="col-sm-6">
+                <img class="img-responsive" src="http://product1.djicdn.com/uploads/photos/1273/medium_1f4a00d5-451a-446c-bf81-44931c75f209.jpg" alt=""></img>
+            </div>
+            <div class="col-sm-6">
+                <div class="row"><h1>大疆无人机X1 威力加强版</h1></div>
+                <div class="row"><h2>¥ 998</h2></div>
+                <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+                <div class="row">
+                     <button id="buy" type="button" class="btn  btn-primary">立刻购买</button>&nbsp;&nbsp;
+                     <button type="button" class="btn btn-warning">加入购物车</button>
+                </div>
+            </div>
+         </div>
+         
+         <hr style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" color="#987cb9" SIZE="1"></hr>
+         
+         <div class="row">
+            <div class="txt">
+                <img src="http://www.wlzni.com/uploads/2017/06/270954301159.jpg" alt=""></img>
+                <img
+                    src="http://www.wlzni.com/uploads/2017/06/270954304945.jpg" alt=""></img>
+                    <img
+                    src="http://www.wlzni.com/uploads/2017/06/270954301053.jpg" alt=""></img>
+                    <img
+                    src="http://www.wlzni.com/uploads/2017/06/270954305049.jpg" alt=""></img>
+                    <img
+                    src="http://www.wlzni.com/uploads/2017/06/270954306407.jpg" alt=""></img>
+            </div>
+
+        </div>
+       
+    </div>
+    
+    
+    <!-- Static footer -->
+    <div th:include="footer :: footer"></div> 
+    
+    <script>
+    $(function(){
+    	
+    })
+    
+    $("#buy").on("click",function(){
+    	/*<![CDATA[*/
+        var x = 201710000000;
+    	var y = 201700000000;
+    	var orderNo = parseInt(Math.random() * (x - y + 1) + y);  
+    	location.href = "/aliPay/pay?orderNo="+orderNo+"&totalAmount=10&orderName=大疆无人机威力加强版&description=测试支付宝支付 ";
+    	/*]]>*/
+    })
+    
+    </script>
+    
+</body>
+</html>

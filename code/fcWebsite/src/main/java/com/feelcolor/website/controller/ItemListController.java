@@ -11,7 +11,7 @@ public class ItemListController {
     @RequestMapping("/all")
     @ApiOperation(value = "商品列表", httpMethod = "GET")
     public String itemList() {
-        return "itemList";
+        return "mall/itemList";
     }
 
 }
