@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="#{websiteTitle}"></title>
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fc.css}" />
+    
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    
+    <style>
+
+    </style>
+
+</head>
+<body>
+<!-- Static navbar -->
+    <div th:include="nav :: nav"></div> 
+
+    <div class="container">
+
+        <div class="row" style="margin-top: 5%">
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">
+
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div>
+                            <legend class="">账号信息</legend>
+                        </div>
+                        <div class="form-group">
+                            <label for="account" class="col-sm-3 control-label">账号：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="account" placeholder="请输入账号">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passWord" class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="passWord" placeholder="请输入密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassWord" class="col-sm-3 control-label">确认密码：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="confirmPassWord" placeholder="请再次输入密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile" class="col-sm-3 control-label">手机：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="mobile" placeholder="请输入手机号码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">邮箱：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="email" placeholder="请输入邮箱地址">
+                            </div>
+                        </div>
+
+                        <div id="legend" class="">
+                            <legend class="">个人信息</legend>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickName" class="col-sm-3 control-label">姓名：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="nickName" placeholder="请输入姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-3 control-label">性别：</label>
+                            <div class="col-sm-4">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="sex"  value="option1"> 男
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="sex"  value="option2"> 女
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="provinceCode" class="col-sm-3 control-label">所在区域：</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="provinceCode">
+                                    <option>北京</option>
+                                    <option>上海</option>
+                                    <option>广州</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <button type="submit" class="btn btn-default">清 空</button>
+                                <button id="register" type="submit" class="btn btn-primary">注 册</button>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="col-sm-3"></div>
+
+        </div>
+
+    </div>
+<!-- Static footer -->
+    <div th:include="footer :: footer"></div> 
+    
+    <script>
+        $('#register').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "test.json",
+                data: {username:$("#username").val(), content:$("#content").val()},
+                dataType: "json",
+                success: function(data){
+                    $('#resText').empty();   //清空resText里面的所有内容
+                    var html = '';
+                    $.each(data, function(commentIndex, comment){
+                        html += '<div class="comment"><h6>' + comment['username']
+                            + ':</h6><p class="para"' + comment['content']
+                            + '</p></div>';
+                    });
+                    $('#resText').html(html);
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
