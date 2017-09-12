@@ -8,10 +8,10 @@
     <title th:text="#{websiteTitle}"></title>
     <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7/css/bootstrap.min.css}" />
     <link rel="stylesheet" th:href="@{/css/fc.css}" />
-    
+
     <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/js/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
-    
+
     <style>
 
     </style>
@@ -19,7 +19,7 @@
 </head>
 <body>
 <!-- Static navbar -->
-    <div th:include="nav :: nav"></div> 
+    <div th:include="nav :: nav"></div>
 
     <div class="container">
 
@@ -41,16 +41,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="passWord" class="col-sm-3 control-label">密码：</label>
+                            <label for="password" class="col-sm-3 control-label">密码：</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="passWord" placeholder="请输入密码">
+                                <input type="text" class="form-control" id="password" placeholder="请输入密码">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="confirmPassWord" class="col-sm-3 control-label">确认密码：</label>
+                            <label for="confirmPassword" class="col-sm-3 control-label">确认密码：</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="confirmPassWord" placeholder="请再次输入密码">
+                                <input type="text" class="form-control" id="confirmPassword" placeholder="请再次输入密码">
                             </div>
                         </div>
 
@@ -103,8 +103,8 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-default">清 空</button>
-                                <button id="register" type="submit" class="btn btn-primary">注 册</button>
+                                <button type="button" class="btn btn-default">清 空</button>
+                                <button id="register" type="button" class="btn btn-primary">注 册</button>
                             </div>
                         </div>
 
@@ -119,28 +119,30 @@
 
     </div>
 <!-- Static footer -->
-    <div th:include="footer :: footer"></div> 
-    
+    <div th:include="footer :: footer"></div>
+
+
     <script>
         $('#register').click(function(){
             $.ajax({
                 type: "POST",
-                url: "test.json",
-                data: {username:$("#username").val(), content:$("#content").val()},
+                url: "register",
+                data: {
+                    account:$("#account").val(),
+                    password:$("#password").val(),
+                    mobile:$("#mobile").val(),
+                    email:$("#email").val(),
+                    nickName:$("#nickName").val(),
+                    sex:$("#sex").val(),
+                    provinceCode:$("#provinceCode").val()
+                },
                 dataType: "json",
                 success: function(data){
-                    $('#resText').empty();   //清空resText里面的所有内容
-                    var html = '';
-                    $.each(data, function(commentIndex, comment){
-                        html += '<div class="comment"><h6>' + comment['username']
-                            + ':</h6><p class="para"' + comment['content']
-                            + '</p></div>';
-                    });
-                    $('#resText').html(html);
+                    $('#example').modal('show')
                 }
             });
         });
     </script>
-    
+
 </body>
 </html>

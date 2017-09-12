@@ -11,12 +11,7 @@ public interface UserInfoService {
      * @param id
      * @return
      */
-    UserInfo selectByPrimaryKey(String id);
-
-    /**
-     * @throws RuntimeException
-     */
-    void test() throws RuntimeException;
+    UserInfo getUserById(String id);
 
     /**
      * 插入用户

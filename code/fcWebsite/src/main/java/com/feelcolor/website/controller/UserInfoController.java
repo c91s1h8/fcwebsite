@@ -17,14 +17,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("user")
-public class UserInfoController {
+public class UserInfoController extends BaseController{
     @Resource
     private UserInfoService userInfoService;
 
     @RequestMapping("/getUserById")
     @ApiOperation(value = "通过id查询用户", httpMethod = "POST")
     public @ResponseBody UserInfo getUserById(String id) {
-        return userInfoService.selectByPrimaryKey(id);
+        return userInfoService.getUserById(id);
     }
 
     @RequestMapping("/getUserList")
@@ -42,7 +42,6 @@ public class UserInfoController {
     @RequestMapping("/test")
     @ApiOperation(value = "test", httpMethod = "GET")
     public @ResponseBody String test() throws RuntimeException {
-        userInfoService.test();
         return "";
     }
 
