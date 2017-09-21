@@ -1,15 +1,13 @@
 package com.feelcolor.website.controller;
 
-import com.feelcolor.website.model.po.UserInfo;
+import com.feelcolor.website.common.AuthAnnotation;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,20 +16,14 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 @RestController
+@RequestMapping("test")
 public class TestController {
     @Autowired
     private MessageSource messageSource;
@@ -99,7 +91,7 @@ public class TestController {
 
     }
 
-    @ApiOperation("测试ThreadPool")
+    @ApiOperation("----")
     @RequestMapping(value = "/test5", method = RequestMethod.GET)
     @ResponseBody
     public String test5(){
@@ -109,6 +101,14 @@ public class TestController {
          return "可算抢到了";
      }
 
+    }
+
+    @ApiOperation("测试自定义注解")
+    @RequestMapping(value = "/test6", method = RequestMethod.GET)
+    @ResponseBody
+    @AuthAnnotation(isLogged = true)
+    public String test6(){
+      return "11111111111111111";
     }
 
     public static void main(String[] args) throws ParseException {

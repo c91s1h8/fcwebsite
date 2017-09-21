@@ -110,7 +110,7 @@
         <dependency>
             <groupId>com.feelcolor.utils</groupId>
             <artifactId>fc-utils</artifactId>
-            <version>0.0.3.RELEASE</version>
+            <version>0.0.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.feelcolor.pay</groupId>

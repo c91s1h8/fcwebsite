@@ -78,6 +78,9 @@ public class Java8Case {
         // forEach(integerList);
 //        getUser(new UserInfo());
         //System.out.println(orElseGet(new UserInfo()));
+        Integer i = 130;
+        Integer j = 130;
+        System.out.println(i==j);
     }
 
     /**
