@@ -18,6 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         Method method = handlerMethod.getMethod();
         AuthAnnotation isLoggedAnnotation = method.getAnnotation(AuthAnnotation.class);
         if (isLoggedAnnotation != null) {
+            System.out.println("权限拦截==================================================================");
             boolean isLogged = isLoggedAnnotation.isLogged();
             if (isLogged) {
                 return true;
