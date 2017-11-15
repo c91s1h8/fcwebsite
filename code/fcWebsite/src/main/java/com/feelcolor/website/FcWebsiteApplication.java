@@ -1,5 +1,7 @@
 package com.feelcolor.website;
 
+import javax.annotation.Resource;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,22 +10,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-
 @SpringBootApplication
-@EnableTransactionManagement    //开启事物
-@MapperScan("com.feelcolor.website.dao.mapper")    //Mybatis mapper扫描2
+@EnableTransactionManagement // 开启事物
+@MapperScan("com.feelcolor.website.dao.mapper") // Mybatis mapper扫描2
 public class FcWebsiteApplication {
 
-	@Resource
-	private RestTemplateBuilder builder;
+    @Resource
+    private RestTemplateBuilder builder;
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return builder.build();
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        return builder.build();
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(FcWebsiteApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FcWebsiteApplication.class, args);
+    }
 }

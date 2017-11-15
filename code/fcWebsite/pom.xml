@@ -128,10 +128,17 @@
             <artifactId>nekohtml</artifactId>
             <version>1.9.22</version>
         </dependency>
-
-
+        
+        <!-- logstash -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.9</version>
+        </dependency>
 
     </dependencies>
+    
+
     <!-- 仓库地址 -->
     <repositories>
         <repository>
