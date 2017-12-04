@@ -114,6 +114,9 @@
 
             </div>
             <div class="col-sm-3"></div>
+            
+
+            <input id="token" type="hidden" th:value="${session.token}" />
 
         </div>
 
@@ -134,7 +137,8 @@
                     email:$("#email").val(),
                     nickName:$("#nickName").val(),
                     sex:$("#sex").val(),
-                    provinceCode:$("#provinceCode").val()
+                    provinceCode:$("#provinceCode").val(),
+                    token: $("#token").val()
                 },
                 dataType: "json",
                 success: function(data){

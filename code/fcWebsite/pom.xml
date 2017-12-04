@@ -106,6 +106,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        
+        <!-- logstash -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.9</version>
+        </dependency>
+        
+        
         <!-- nexus上自己打的jar包 -->
         <dependency>
             <groupId>com.feelcolor.utils</groupId>
@@ -129,12 +138,7 @@
             <version>1.9.22</version>
         </dependency>
         
-        <!-- logstash -->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>4.9</version>
-        </dependency>
+        
 
     </dependencies>
     

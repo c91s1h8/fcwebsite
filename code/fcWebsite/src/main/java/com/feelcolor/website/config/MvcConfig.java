@@ -12,6 +12,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.feelcolor.website.interceptor.RequestInterceptor;
+import com.feelcolor.website.interceptor.TokenInterceptor;
 
 /**
  * 继承WebMvcConfigAdapter可以重写SpringMVC的一些配置
@@ -40,5 +41,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeChangeInterceptor());
         registry.addInterceptor(new RequestInterceptor());
         registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/test/*");
+        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/login/*");
     }
 }
