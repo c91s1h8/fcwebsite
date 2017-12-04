@@ -1,6 +1,8 @@
 package com.feelcolor.website.controller;
 
 import com.feelcolor.website.common.AuthAnnotation;
+import com.feelcolor.website.task.AsyncTask;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -21,10 +23,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @RestController
 @RequestMapping("test")
 public class TestController {
+    @Resource
+    private AsyncTask asyncTask;
     @Autowired
     private MessageSource messageSource;
 
@@ -110,6 +116,24 @@ public class TestController {
     public String test6(){
       return "11111111111111111";
     }
+    
+    
+    @ApiOperation("测试Async 异步转同步")
+    @RequestMapping(value = "/test7", method = RequestMethod.GET)
+    @ResponseBody
+    public String test7() throws InterruptedException, ExecutionException{
+        Future<String> future=asyncTask.returnAsync();
+        while(true){
+            if(future.isDone()){
+                System.out.println("异步请求执行完毕，结果:"+future.get()+"==============================");
+                break;
+            }
+        }
+        System.out.println("异步完毕，执行同步请求====================================");
+        
+      return "11111111111111111";
+    }
+    
 
     public static void main(String[] args) throws ParseException {
     Byte i = new Byte("127");
@@ -118,6 +142,10 @@ public class TestController {
     int j = 2147483647;
     System.out.println(4294967296l/2);
     
+    
+    float f1 =0.99999999f;  //7位
+    float f2 =1f;
+    System.out.println(f1==f2);
 
     }
 
