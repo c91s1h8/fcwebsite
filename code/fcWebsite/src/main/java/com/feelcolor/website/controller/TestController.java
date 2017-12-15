@@ -1,6 +1,7 @@
 package com.feelcolor.website.controller;
 
 import com.feelcolor.website.common.AuthAnnotation;
+import com.feelcolor.website.model.po.UserInfo;
 import com.feelcolor.website.task.AsyncTask;
 
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
@@ -39,6 +41,8 @@ public class TestController {
 
     @Resource
     private RedisTemplate<String, String> redisTemplate;
+    @Resource
+    private RestTemplate restTemplate;
 
     @Resource
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
@@ -134,9 +138,19 @@ public class TestController {
       return "11111111111111111";
     }
     
+    @ApiOperation("88888")
+    @RequestMapping(value = "/test8", method = RequestMethod.GET)
+    @ResponseBody
+    public String test8(){
+        
+        Map<String, Object> lxData = restTemplate.postForObject("http://111.203.248.53:10009/Receive/Index", "", Map.class);
+        
+      return "11111111111111111";
+    }
+    
 
     public static void main(String[] args) throws ParseException {
-    Byte i = new Byte("127");
+/*    Byte i = new Byte("127");
     System.out.println(i);
     
     int j = 2147483647;
@@ -145,9 +159,65 @@ public class TestController {
     
     float f1 =0.99999999f;  //7位
     float f2 =1f;
-    System.out.println(f1==f2);
-
+    System.out.println(f1==f2);*/
+        
+//        HashSet set =new HashSet<Integer>();
+//        
+//        LinkedHashMap<Integer, Object> linkmap = new LinkedHashMap<Integer,Object>();
+//        Object[] a = {1,'a',3,4,"啊","&",7,8,2};
+//        for (int i = 0; i < a.length; i++) {
+//            set.add(a[i]);
+//            linkmap.put(i, a[i]);
+//        }
+//        System.out.println(set.toString());
+//        
+//        for (Iterator iterator = set.iterator(); iterator.hasNext();) {
+//            Object object = (Object) iterator.next();
+//            System.out.println(object.toString());
+//        }
+//        
+//        for(Integer i : linkmap.keySet()){
+//            System.out.println(linkmap.get(i));
+//        }
+//        
+//        List<Integer> list = new ArrayList<Integer>();  
+//        for (int i = 0; i < 10; i++)  {
+//            list.add(new Integer(i));  
+//        }
+//        
+//        Collections.shuffle(list);
+//        
+//        System.out.println(list);
+       
+        UserInfo us =new UserInfo();
+        us.setNickName("111");
+        updateUser(us);
+        System.out.println(us.getNickName());
     }
+    
+    public static void updateUser(UserInfo u){
+        u.setNickName("222");
+    }
+    
+    
+    public static String a(){
+        String  s = null;
+        try {
+              s="111";
+            return s;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return s;
+        }finally {
+            s="2222";
+            return s;
+        }
+        
+    }
+    
+    
+   
 
 
 

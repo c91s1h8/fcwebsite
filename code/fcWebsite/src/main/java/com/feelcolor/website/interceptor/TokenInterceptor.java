@@ -23,7 +23,9 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             if (tokenAnnotation != null) {
                 boolean needSave = tokenAnnotation.save();
                 if (needSave) {
-                    request.getSession(false).setAttribute("token", UUID.randomUUID().toString());
+                    String uuid = UUID.randomUUID().toString();
+                    request.getSession(false).setAttribute("token", uuid);
+                    log.info("token已经存入，"+uuid);
                 }
                 boolean needRemove = tokenAnnotation.remove();
                 if (needRemove) {
@@ -31,6 +33,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
                         return false;
                     } else {
                         request.getSession(false).removeAttribute("token");
+                        log.info("token移除，");
                     }
                 }
             }
