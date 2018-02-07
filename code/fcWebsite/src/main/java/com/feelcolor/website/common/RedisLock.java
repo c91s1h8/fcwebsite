@@ -1,6 +1,5 @@
-package com.jyc.mfs.common.lock;
+package com.feelcolor.website.common;
 
-import com.jyc.mfs.common.redis.RedisConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;

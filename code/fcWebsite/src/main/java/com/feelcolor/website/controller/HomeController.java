@@ -71,4 +71,26 @@ public class HomeController {
         return "login/login";
     }
 
+    /**
+     * 首页
+     *
+     * @return
+     */
+    @RequestMapping("/socket")
+    @ApiOperation(value = "socket", httpMethod = "GET")
+    public String socket() {
+        return "socket";
+    }
+
+    /**
+     * 首页
+     *
+     * @return
+     */
+    @RequestMapping("/socketjs")
+    @ApiOperation(value = "socketjs", httpMethod = "GET")
+    public String socketjs() {
+        return "socketjs";
+    }
+
 }
