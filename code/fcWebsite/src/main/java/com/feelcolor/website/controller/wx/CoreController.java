@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/wxCore")
 @Slf4j
 public class CoreController {
     //验证是否来自微信服务器的消息
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/checkSignature",method = RequestMethod.GET)
     public String checkSignature(@RequestParam(name = "signature" ,required = false) String signature  ,
                                  @RequestParam(name = "nonce",required = false) String  nonce ,
                                  @RequestParam(name = "timestamp",required = false) String  timestamp ,
