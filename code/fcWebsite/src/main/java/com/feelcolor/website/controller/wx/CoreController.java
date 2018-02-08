@@ -19,8 +19,8 @@ public class CoreController {
     @Resource
     private WxCoreService wxCoreService;
 
-    @RequestMapping(value = "/checkSignature",method = RequestMethod.GET)
-    public String checkSignature(@RequestParam(name = "signature" ,required = false) String signature  ,
+    @RequestMapping(value = "/coreService",method = RequestMethod.GET)
+    public String coreService(@RequestParam(name = "signature" ,required = false) String signature  ,
                                  @RequestParam(name = "nonce",required = false) String  nonce ,
                                  @RequestParam(name = "timestamp",required = false) String  timestamp ,
                                  @RequestParam(name = "echostr",required = false) String  echostr){
@@ -33,9 +33,10 @@ public class CoreController {
         return "";
     }
 
-    @RequestMapping(value = "/checkSignature",method = RequestMethod.POST)
-    public String checkSignature(HttpServletRequest request){
+    @RequestMapping(value = "/coreService",method = RequestMethod.POST)
+    public String coreService(HttpServletRequest request){
         String respMessage = wxCoreService.processRequest(request);
+        log.info("wxCore返回消息："+respMessage);
         return respMessage;
     }
 
