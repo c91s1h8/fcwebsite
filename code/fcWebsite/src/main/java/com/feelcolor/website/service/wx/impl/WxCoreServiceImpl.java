@@ -5,6 +5,7 @@ import com.feelcolor.website.common.wx.MessageUtil;
 import com.feelcolor.website.common.wx.NewsMessage;
 import com.feelcolor.website.common.wx.TextMessage;
 import com.feelcolor.website.service.wx.WxCoreService;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class WxCoreServiceImpl implements WxCoreService {
     @Override
     public String processRequest(HttpServletRequest request) {
