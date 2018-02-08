@@ -1,6 +1,5 @@
 package com.feelcolor.website.common.wx;
 
-import com.alipay.api.domain.Article;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
@@ -147,7 +146,7 @@ public class MessageUtil {
      */
     public static String newsMessageToXml(NewsMessage newsMessage) {
         xstream.alias("xml", newsMessage.getClass());
-        xstream.aliasField("item", new Article().getClass(),"Article");
+        xstream.alias("item", new Article().getClass());
         return xstream.toXML(newsMessage);
     }
 
