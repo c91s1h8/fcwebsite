@@ -10,10 +10,10 @@ public class ThreadPoolConfig {
     @Bean
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setCorePoolSize(10);
-        threadPoolTaskExecutor.setMaxPoolSize(50);
-        threadPoolTaskExecutor.setQueueCapacity(1000);
-        threadPoolTaskExecutor.setKeepAliveSeconds(300);
+        threadPoolTaskExecutor.setCorePoolSize(10); //核心线程数
+        threadPoolTaskExecutor.setMaxPoolSize(50);  //最大线程数
+        threadPoolTaskExecutor.setQueueCapacity(1000);  //队列大小
+        threadPoolTaskExecutor.setKeepAliveSeconds(300);   //超过多长时间进行线程回收
         threadPoolTaskExecutor.initialize();
         return threadPoolTaskExecutor;
     }
