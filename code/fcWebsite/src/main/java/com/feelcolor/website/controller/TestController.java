@@ -4,6 +4,8 @@ import com.feelcolor.website.common.AuthAnnotation;
 import com.feelcolor.website.model.po.UserInfo;
 import com.feelcolor.website.task.AsyncTask;
 
+import com.feelcolor.website.thread.CountThread;
+import com.feelcolor.website.thread.SecKillThread;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -11,6 +13,8 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,6 +45,10 @@ public class TestController {
 
     @Resource
     private RedisTemplate<String, String> redisTemplate;
+
+    @Resource
+    private RedisTemplate<String, Integer> integerRedisTemplate;
+
     @Resource
     private RestTemplate restTemplate;
 
@@ -89,6 +97,7 @@ public class TestController {
     public void test4(){
         for (int i =0;i<200;i++){
             int finalI = i;
+
             threadPoolTaskExecutor.execute(new Thread(()->{
                 try {
                     Thread.sleep(1000);
@@ -97,10 +106,7 @@ public class TestController {
                 }
                 System.out.println("============"+ finalI);
             }));
-
-
         }
-
     }
 
     @ApiOperation("----")
@@ -149,6 +155,89 @@ public class TestController {
         
       return "11111111111111111";
     }
+
+
+    @ApiOperation("测试ThreadPool")
+    @RequestMapping(value = "/test9", method = RequestMethod.POST)
+    @ResponseBody
+    public void test9(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setStatus(100);
+//        Thread thread1=new Thread(new CountThread(userInfo),"线程1");
+//        Thread thread2=new Thread(new CountThread(userInfo),"线程2");
+//        thread1.start();
+//        thread2.start();
+
+        if(userInfo.getStatus()>1){
+            for (int i =0;i<200;i++){
+                Thread thread=new Thread(new CountThread(userInfo),"线程"+i);
+                threadPoolTaskExecutor.execute(thread);
+            }
+        }
+
+
+
+    }
+
+
+
+    @ApiOperation("测试Redis事务")
+    @RequestMapping(value = "/test10", method = RequestMethod.POST)
+    @ResponseBody
+    public void test10(){
+        redisTemplate.setEnableTransactionSupport(true);        //开启事务支持
+        redisTemplate.delete("t");
+        redisTemplate.multi();
+        redisTemplate.opsForList().leftPush("t","1");
+        redisTemplate.opsForList().leftPush("t","2");
+        int a = 6 / 0;
+        System.out.println(a);
+        redisTemplate.opsForList().leftPush("t","3");
+        redisTemplate.opsForList().leftPush("t","4");
+        redisTemplate.opsForList().leftPush("t","5");
+        redisTemplate.exec();
+    }
+
+    @ApiOperation("测试Redis事务")
+    @RequestMapping(value = "/test11", method = RequestMethod.POST)
+    @ResponseBody
+    public void test11(){
+        System.out.println(redisTemplate.opsForList().leftPop("t"));
+        System.out.println(redisTemplate.opsForList().leftPop("t"));
+        System.out.println(redisTemplate.opsForList().leftPop("t"));
+        System.out.println(redisTemplate.opsForList().leftPop("t"));
+        System.out.println(redisTemplate.opsForList().leftPop("t"));
+    }
+
+    @ApiOperation("测试Redis watch秒杀")
+    @RequestMapping(value = "/test12", method = RequestMethod.POST)
+    @ResponseBody
+    public void test12(){
+        int count=100;
+        integerRedisTemplate.opsForValue().set("watchKey",100);
+        System.out.println("设置秒杀商品数量："+count);
+
+        for (int i = 0; i < 200; i++) {
+            Thread thread = new Thread(new SecKillThread(integerRedisTemplate));
+            threadPoolTaskExecutor.execute(thread);
+        }
+    }
+
+
+    @ApiOperation("测试并发接口")
+    @RequestMapping(value = "/test13", method = RequestMethod.POST)
+    @ResponseBody
+    public void test13(){
+        for (int i = 0; i < 50; i++) {
+            threadPoolTaskExecutor.execute(new Thread(()->{
+                MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+                requestEntity.add("json", "{\"wAction\":\"5002\",\"wAgent\":\"2\",\"wParam\":{\"token\":\"f4d2cfcc-d417-4fd8-a843-c7866a31ce57\",\"wLotteryId\":\"0\",\"ticket\":{\"userId\":\"436\",\"appParamsId\":\"1072\"}},\"wSign\":\"0C56875CF01B38A839184881096D5773\"}");
+                String s = restTemplate.postForObject("http://192.168.1.15:8080/appinterface.jsp", requestEntity, String.class);
+                System.out.println(s);
+            }));
+        }
+    }
+
     
 
     public static void main(String[] args) throws ParseException {

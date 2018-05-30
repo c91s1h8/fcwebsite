@@ -27,13 +27,13 @@
     </encoder>
   </appender>
   
-  <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <destination>47.94.161.88:9601</destination>
-    <!-- encoder is required -->
-    <encoder class="net.logstash.logback.encoder.LogstashEncoder" charset="${charset}">
-        <customFields>{"app_name": "${APP_Name}"}</customFields>
-    </encoder>
-  </appender>
+  <!--<appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+    <!--<destination>47.94.161.88:9601</destination>-->
+    <!--&lt;!&ndash; encoder is required &ndash;&gt;-->
+    <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder" charset="${charset}">-->
+        <!--<customFields>{"app_name": "${APP_Name}"}</customFields>-->
+    <!--</encoder>-->
+  <!--</appender>-->
 
   <logger name="com.feelcolor" level="INFO"></logger>
   <logger name="org.springframework.boot" level="INFO"></logger>
@@ -42,6 +42,6 @@
   <root level="INFO">
     <appender-ref ref="STDOUT" />
     <appender-ref ref="FILE" />
-    <appender-ref ref="STASH" />
+    <!--<appender-ref ref="STASH" />-->
   </root>
 </configuration>  
