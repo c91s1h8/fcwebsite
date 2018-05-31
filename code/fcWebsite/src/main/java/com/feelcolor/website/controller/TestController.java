@@ -4,8 +4,7 @@ import com.feelcolor.website.common.AuthAnnotation;
 import com.feelcolor.website.model.po.UserInfo;
 import com.feelcolor.website.task.AsyncTask;
 
-import com.feelcolor.website.thread.CountThread;
-import com.feelcolor.website.thread.SecKillThread;
+import com.feelcolor.website.thread.*;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -238,7 +237,25 @@ public class TestController {
         }
     }
 
-    
+    @ApiOperation("测试wait notify")
+    @RequestMapping(value = "/test14", method = RequestMethod.POST)
+    @ResponseBody
+    public void test14(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setSex(0);
+        userInfo.setStatus(0);
+        threadPoolTaskExecutor.execute(new WaitThread(userInfo));
+        threadPoolTaskExecutor.execute(new NotifyThread(userInfo));
+    }
+
+    @ApiOperation("测试pruducer consumer")
+    @RequestMapping(value = "/test15", method = RequestMethod.POST)
+    @ResponseBody
+    public void test15(){
+        Queue<Integer> queue = new LinkedList<Integer>();
+        threadPoolTaskExecutor.execute(new ProducerThread(queue,"生产者"));
+        threadPoolTaskExecutor.execute(new ConsumerThread(queue,"消费者"));
+    }
 
     public static void main(String[] args) throws ParseException {
 /*    Byte i = new Byte("127");
@@ -280,14 +297,28 @@ public class TestController {
 //        
 //        System.out.println(list);
        
-        UserInfo us =new UserInfo();
-        us.setNickName("111");
-        updateUser(us);
-        System.out.println(us.getNickName());
+        UserInfo a =new UserInfo();
+        a.setNickName("aaa");
+
+        UserInfo b =new UserInfo();
+        b.setNickName("bbb");
+
+        change(a,b);
+        System.out.println(a.getNickName()+"-"+b.getNickName());
+
+
+
+
     }
     
     public static void updateUser(UserInfo u){
         u.setNickName("222");
+    }
+
+    public static void change(UserInfo a ,UserInfo b){
+        UserInfo tmp =a ;
+        a=b;
+        b=tmp;
     }
     
     
