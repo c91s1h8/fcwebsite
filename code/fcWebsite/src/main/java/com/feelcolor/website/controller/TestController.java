@@ -93,17 +93,17 @@ public class TestController {
     @ApiOperation("测试ThreadPool")
     @RequestMapping(value = "/test4", method = RequestMethod.POST)
     @ResponseBody
-    public void test4(){
-        for (int i =0;i<200;i++){
+    public void test4() {
+        for (int i = 0; i < 200; i++) {
             int finalI = i;
 
-            threadPoolTaskExecutor.execute(new Thread(()->{
+            threadPoolTaskExecutor.execute(new Thread(() -> {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("============"+ finalI);
+                System.out.println("============" + finalI);
             }));
         }
     }
@@ -111,12 +111,12 @@ public class TestController {
     @ApiOperation("----")
     @RequestMapping(value = "/test5", method = RequestMethod.GET)
     @ResponseBody
-    public String test5(){
-     if(Math.random()>0.1){
-         return "没抢到 哈哈哈";
-     }else{
-         return "可算抢到了";
-     }
+    public String test5() {
+        if (Math.random() > 0.1) {
+            return "没抢到 哈哈哈";
+        } else {
+            return "可算抢到了";
+        }
 
     }
 
@@ -124,42 +124,42 @@ public class TestController {
     @RequestMapping(value = "/test6", method = RequestMethod.GET)
     @ResponseBody
     @AuthAnnotation(isLogged = true)
-    public String test6(){
-      return "11111111111111111";
+    public String test6() {
+        return "11111111111111111";
     }
-    
-    
+
+
     @ApiOperation("测试Async 异步转同步")
     @RequestMapping(value = "/test7", method = RequestMethod.GET)
     @ResponseBody
-    public String test7() throws InterruptedException, ExecutionException{
-        Future<String> future=asyncTask.returnAsync();
-        while(true){
-            if(future.isDone()){
-                System.out.println("异步请求执行完毕，结果:"+future.get()+"==============================");
+    public String test7() throws InterruptedException, ExecutionException {
+        Future<String> future = asyncTask.returnAsync();
+        while (true) {
+            if (future.isDone()) {
+                System.out.println("异步请求执行完毕，结果:" + future.get() + "==============================");
                 break;
             }
         }
         System.out.println("异步完毕，执行同步请求====================================");
-        
-      return "11111111111111111";
+
+        return "11111111111111111";
     }
-    
+
     @ApiOperation("88888")
     @RequestMapping(value = "/test8", method = RequestMethod.GET)
     @ResponseBody
-    public String test8(){
-        
+    public String test8() {
+
         Map<String, Object> lxData = restTemplate.postForObject("http://111.203.248.53:10009/Receive/Index", "", Map.class);
-        
-      return "11111111111111111";
+
+        return "11111111111111111";
     }
 
 
     @ApiOperation("测试ThreadPool")
     @RequestMapping(value = "/test9", method = RequestMethod.POST)
     @ResponseBody
-    public void test9(){
+    public void test9() {
         UserInfo userInfo = new UserInfo();
         userInfo.setStatus(100);
 //        Thread thread1=new Thread(new CountThread(userInfo),"线程1");
@@ -167,40 +167,38 @@ public class TestController {
 //        thread1.start();
 //        thread2.start();
 
-        if(userInfo.getStatus()>1){
-            for (int i =0;i<200;i++){
-                Thread thread=new Thread(new CountThread(userInfo),"线程"+i);
+        if (userInfo.getStatus() > 1) {
+            for (int i = 0; i < 200; i++) {
+                Thread thread = new Thread(new CountThread(userInfo), "线程" + i);
                 threadPoolTaskExecutor.execute(thread);
             }
         }
 
 
-
     }
-
 
 
     @ApiOperation("测试Redis事务")
     @RequestMapping(value = "/test10", method = RequestMethod.POST)
     @ResponseBody
-    public void test10(){
+    public void test10() {
         redisTemplate.setEnableTransactionSupport(true);        //开启事务支持
         redisTemplate.delete("t");
         redisTemplate.multi();
-        redisTemplate.opsForList().leftPush("t","1");
-        redisTemplate.opsForList().leftPush("t","2");
+        redisTemplate.opsForList().leftPush("t", "1");
+        redisTemplate.opsForList().leftPush("t", "2");
         int a = 6 / 0;
         System.out.println(a);
-        redisTemplate.opsForList().leftPush("t","3");
-        redisTemplate.opsForList().leftPush("t","4");
-        redisTemplate.opsForList().leftPush("t","5");
+        redisTemplate.opsForList().leftPush("t", "3");
+        redisTemplate.opsForList().leftPush("t", "4");
+        redisTemplate.opsForList().leftPush("t", "5");
         redisTemplate.exec();
     }
 
     @ApiOperation("测试Redis事务")
     @RequestMapping(value = "/test11", method = RequestMethod.POST)
     @ResponseBody
-    public void test11(){
+    public void test11() {
         System.out.println(redisTemplate.opsForList().leftPop("t"));
         System.out.println(redisTemplate.opsForList().leftPop("t"));
         System.out.println(redisTemplate.opsForList().leftPop("t"));
@@ -211,10 +209,10 @@ public class TestController {
     @ApiOperation("测试Redis watch秒杀")
     @RequestMapping(value = "/test12", method = RequestMethod.POST)
     @ResponseBody
-    public void test12(){
-        int count=100;
-        integerRedisTemplate.opsForValue().set("watchKey",100);
-        System.out.println("设置秒杀商品数量："+count);
+    public void test12() {
+        int count = 100;
+        integerRedisTemplate.opsForValue().set("watchKey", 100);
+        System.out.println("设置秒杀商品数量：" + count);
 
         for (int i = 0; i < 200; i++) {
             Thread thread = new Thread(new SecKillThread(integerRedisTemplate));
@@ -226,9 +224,9 @@ public class TestController {
     @ApiOperation("测试并发接口")
     @RequestMapping(value = "/test13", method = RequestMethod.POST)
     @ResponseBody
-    public void test13(){
+    public void test13() {
         for (int i = 0; i < 50; i++) {
-            threadPoolTaskExecutor.execute(new Thread(()->{
+            threadPoolTaskExecutor.execute(new Thread(() -> {
                 MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
                 requestEntity.add("json", "{\"wAction\":\"5002\",\"wAgent\":\"2\",\"wParam\":{\"token\":\"f4d2cfcc-d417-4fd8-a843-c7866a31ce57\",\"wLotteryId\":\"0\",\"ticket\":{\"userId\":\"436\",\"appParamsId\":\"1072\"}},\"wSign\":\"0C56875CF01B38A839184881096D5773\"}");
                 String s = restTemplate.postForObject("http://192.168.1.15:8080/appinterface.jsp", requestEntity, String.class);
@@ -240,7 +238,7 @@ public class TestController {
     @ApiOperation("测试wait notify")
     @RequestMapping(value = "/test14", method = RequestMethod.POST)
     @ResponseBody
-    public void test14(){
+    public void test14() {
         UserInfo userInfo = new UserInfo();
         userInfo.setSex(0);
         userInfo.setStatus(0);
@@ -251,10 +249,51 @@ public class TestController {
     @ApiOperation("测试pruducer consumer")
     @RequestMapping(value = "/test15", method = RequestMethod.POST)
     @ResponseBody
-    public void test15(){
+    public void test15() {
         Queue<Integer> queue = new LinkedList<Integer>();
-        threadPoolTaskExecutor.execute(new ProducerThread(queue,"生产者"));
-        threadPoolTaskExecutor.execute(new ConsumerThread(queue,"消费者"));
+        threadPoolTaskExecutor.execute(new ProducerThread(queue, "生产者"));
+        threadPoolTaskExecutor.execute(new ConsumerThread(queue, "消费者"));
+    }
+
+
+    @ApiOperation("测试join")
+    @RequestMapping(value = "/test16", method = RequestMethod.POST)
+    @ResponseBody
+    public void test16() {
+        Thread thread1 = new JoinThread("线程一");
+        Thread thread2 = new JoinThread("线程二");
+        try {
+            thread1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        threadPoolTaskExecutor.execute(thread1);
+        System.out.println("join完毕");
+     //   thread1.start();;
+
+        //threadPoolTaskExecutor.execute(thread2);
+       // thread2.start();
+    }
+
+    @ApiOperation("测试Lock 生产-消费")
+    @RequestMapping(value = "/test17", method = RequestMethod.POST)
+    @ResponseBody
+    public void test17() {
+        ConditionQueue conditionQueue=new ConditionQueue();
+
+
+        threadPoolTaskExecutor.execute(new Thread(() -> {
+            for(int i=0;i<100;i++){
+                conditionQueue.produce(i);
+            }
+        }));
+
+        threadPoolTaskExecutor.execute(new Thread(() -> {
+            while(true){
+                conditionQueue.consume();
+            }
+        }));
+
     }
 
     public static void main(String[] args) throws ParseException {
@@ -268,7 +307,7 @@ public class TestController {
     float f1 =0.99999999f;  //7位
     float f2 =1f;
     System.out.println(f1==f2);*/
-        
+
 //        HashSet set =new HashSet<Integer>();
 //        
 //        LinkedHashMap<Integer, Object> linkmap = new LinkedHashMap<Integer,Object>();
@@ -296,51 +335,104 @@ public class TestController {
 //        Collections.shuffle(list);
 //        
 //        System.out.println(list);
-       
-        UserInfo a =new UserInfo();
-        a.setNickName("aaa");
 
-        UserInfo b =new UserInfo();
-        b.setNickName("bbb");
-
-        change(a,b);
-        System.out.println(a.getNickName()+"-"+b.getNickName());
-
-
+//        UserInfo a =new UserInfo();
+//        a.setNickName("aaa");
+//
+//        UserInfo b =new UserInfo();
+//        b.setNickName("bbb");
+//
+//        change(a,b);
+//        System.out.println(a.getNickName()+"-"+b.getNickName());
 
 
+//        final String a="aaaaaaaa";
+//        System.out.println(a);
+//        a= "bbbbbbbbbbbbb";
+//        System.out.println(a);
+
+
+//        System.out.println(fbnq(11));
+
+//        LinkedHashMap linkedHashMap = new LinkedHashMap();
+//        Map map =new HashMap();
+//
+//        for (int i=0;i<=200;i++){
+//            linkedHashMap.put(i,i);
+//            map.put(i,i);
+//        }
+//
+//        Iterator<Map.Entry> linkIteraotr = linkedHashMap.keySet().iterator();
+//
+//        while(linkIteraotr.hasNext()){
+//            System.out.println(linkIteraotr.next());
+//        }
+//
+//        Iterator iterator = map.keySet().iterator();
+//        while(iterator.hasNext()){
+//            System.out.println(iterator.next());
+//        }
+
+        int[] a = { 4, 7, 5, 24, 12, 56, 21, 54, 42, 45 };
+
+        for(int i=0;i<a.length;i++){
+            boolean flag =true;
+            for(int j=0;j<a.length-1;j++){
+                if(a[j+1]<a[j]){
+                    int tmp =a[j];
+                    a[j]=a[j+1];
+                    a[j+1]=tmp;
+                    flag=false;
+                }
+            }
+            if(flag)break;
+        }
+
+        Arrays.stream(a).forEach(System.out::println);
     }
-    
-    public static void updateUser(UserInfo u){
+
+
+
+
+    public static int fbnq(int pos) {
+        int result = 0;
+        if (pos == 1) {
+            result = 0;
+        } else if (pos == 2) {
+            result = 1;
+        } else {
+            result = fbnq(pos - 1) + fbnq(pos - 2);
+        }
+        return result;
+    }
+
+
+    public static void updateUser(UserInfo u) {
         u.setNickName("222");
     }
 
-    public static void change(UserInfo a ,UserInfo b){
-        UserInfo tmp =a ;
-        a=b;
-        b=tmp;
+    public static void change(UserInfo a, UserInfo b) {
+        UserInfo tmp = a;
+        a = b;
+        b = tmp;
     }
-    
-    
-    public static String a(){
-        String  s = null;
+
+
+    public static String a() {
+        String s = null;
         try {
-              s="111";
+            s = "111";
             return s;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return s;
-        }finally {
-            s="2222";
+        } finally {
+            s = "2222";
             return s;
         }
-        
-    }
-    
-    
-   
 
+    }
 
 
 }

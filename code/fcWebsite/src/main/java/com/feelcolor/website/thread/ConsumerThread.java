@@ -7,6 +7,8 @@ public class ConsumerThread extends  Thread {
 
     private Queue queue;
 
+    private Integer count =0;
+
     public ConsumerThread(Queue queue,String name) {
         super(name);
         this.queue = queue;
@@ -15,7 +17,7 @@ public class ConsumerThread extends  Thread {
 
     @Override
     public void run() {
-        while (true){
+        while (count<=30){
             synchronized (queue){
                 while(queue.isEmpty()){
                     System.out.println("Queue is empty," + "Consumer thread is waiting" + " for producer thread to put something in queue");
@@ -26,8 +28,10 @@ public class ConsumerThread extends  Thread {
                     }
                 }
                 System.out.println("Consuming value : " + queue.remove());
+                count++;
                 queue.notifyAll();
             }
         }
+        System.out.println("已经消费"+count+"次，"+Thread.currentThread().getName()+"线程退出");
     }
 }
